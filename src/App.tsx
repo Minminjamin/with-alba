@@ -1,18 +1,18 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
 import Header from "./component/Header/Header";
 import Home from "./component/Home/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="mx-24 my-5 relative">
         <Header />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
+        <div className="">
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </div>
       </div>
     </BrowserRouter>
   );

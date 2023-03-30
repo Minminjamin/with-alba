@@ -8,7 +8,7 @@ const Header = () => {
     navigate("/");
   };
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleMouseEnter = () => {
     setIsOpen(true);
@@ -17,22 +17,32 @@ const Header = () => {
   const handleMouseLeave = () => {
     setIsOpen(false);
   };
+
   return (
-    <div>
+    <div className="flex justify-between text-center z-10">
       <header>
-        <h1 onClick={onHandleLogo}>위드알바</h1>
+        <h1
+          onClick={onHandleLogo}
+          className="font-extrabold text-3xl cursor-pointer"
+        >
+          위드알바
+        </h1>
       </header>
 
-      <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <span>My Page</span>
+      <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="absolute right-0"
+      >
+        <h3>로그인/마이페이지</h3>
         {isOpen && (
-          <div>
+          <div className="mt-4 bg-white rounded-lg shadow-lg">
             <ul>
-              <li>
-                <h4>로그인</h4>
+              <li className="py-2 hover:bg-cyan-200 hover:text-white">
+                <h4 className="font-medium ">로그인</h4>
               </li>
-              <li>
-                <h4>마이페이지</h4>
+              <li className="py-2 border-t hover:bg-cyan-200 hover:text-white">
+                <h4 className="font-medium">마이페이지</h4>
               </li>
             </ul>
           </div>
