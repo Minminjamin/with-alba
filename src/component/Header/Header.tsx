@@ -38,10 +38,10 @@ const Header = () => {
         {isOpen && (
           <div className="mt-4 bg-white rounded-lg shadow-lg">
             <ul>
-              <li className="py-2 hover:bg-cyan-200 hover:text-white">
+              <li className="py-2 hover:bg-cyan-100 hover:text-white">
                 <h4 className="font-medium ">로그인</h4>
               </li>
-              <li className="py-2 border-t hover:bg-cyan-200 hover:text-white">
+              <li className="py-2 border-t hover:bg-cyan-100 hover:text-white">
                 <h4 className="font-medium">마이페이지</h4>
               </li>
             </ul>
