@@ -6,12 +6,12 @@ import Join from "./component/Login/Join";
 import Login from "./component/Login/Login";
 
 function App() {
-  const [isLogin, setIsLogin] = useState<boolean>(false);
+  // const [isLogin, setIsLogin] = useState<boolean>(false);
 
   return (
     <BrowserRouter>
       <div className="mx-24 my-5 relative">
-        <Header isLogin={isLogin} />
+        <Header />
         <div className="">
           <Routes>
             <Route path="/" element={<Home />} />

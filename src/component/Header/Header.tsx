@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux/es/exports";
 
-const Header = ({ isLogin }: { isLogin: boolean }) => {
+const Header = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state: any) => state.isLogin.isLoginned);
 
   const onHandleLogo = () => {
     navigate("/");
   };
-
-  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleMouseEnter = () => {
     setIsOpen(true);
@@ -43,7 +47,7 @@ const Header = ({ isLogin }: { isLogin: boolean }) => {
           <div className="mt-4 bg-white rounded-lg shadow-lg">
             <ul>
               <li className="py-2 hover:bg-cyan-100 hover:text-white">
-                {isLogin ? (
+                {isLoggedIn ? (
                   <h4 className="font-medium">로그아웃</h4>
                 ) : (
                   <h4 className="font-medium" onClick={onHandleClickLogin}>

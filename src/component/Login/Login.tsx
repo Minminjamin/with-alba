@@ -2,12 +2,17 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../Firebase/FirebaseConfig";
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import { login } from "../../redux/modules/isLogin/isLoginAction";
 
 const Login = () => {
   const [id, setId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  useSelector((state: any) => state.isLogin.isLogin);
 
   const onHandleJoin = () => {
     navigate("/login/join");
@@ -27,9 +32,14 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, `${id}@withalba.com`, password);
+      dispatch(login());
       navigate("/");
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      if (error.code === "auth/user-not-found") {
+        alert("존재하지 않는 사용자입니다.");
+      } else {
+        console.log(error);
+      }
     }
   };
 

@@ -1,7 +1,7 @@
 import { LOGIN, LOGOUT } from "./isLoginAction";
 
 const initialState = {
-  isLogin: false,
+  isLoginned: false,
 };
 
 export const isLoginReducer = (state = initialState, action: any) => {
@@ -9,13 +9,13 @@ export const isLoginReducer = (state = initialState, action: any) => {
     case LOGIN:
       return {
         ...state,
-        isLogin: true,
+        isLoginned: true,
       };
 
     case LOGOUT:
       return {
         ...state,
-        isLogin: false,
+        isLoginned: false,
       };
 
     default:
