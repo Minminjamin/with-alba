@@ -47,8 +47,8 @@ const Join = () => {
       );
 
       await updateProfile(user, { displayName: name });
-
-      navigatge("/");
+      alert("회원가입에 성공하셨습니다");
+      navigatge(-1);
     } catch (error) {
       console.error(error);
     }
