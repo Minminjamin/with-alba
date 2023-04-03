@@ -106,7 +106,7 @@ const Join = () => {
 
         <button
           type="submit"
-          className="bg-indigo-500 rounded-md text-white hover:text-orange-100 hover:bg-cyan-400"
+          className="bg-indigo-500 rounded-md text-white hover:text-orange-100 hover:bg-indigo-800"
         >
           회원가입
         </button>

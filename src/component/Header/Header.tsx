@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ isLogin }: { isLogin: boolean }) => {
   const navigate = useNavigate();
 
   const onHandleLogo = () => {
@@ -16,6 +16,10 @@ const Header = () => {
 
   const handleMouseLeave = () => {
     setIsOpen(false);
+  };
+
+  const onHandleClickLogin = () => {
+    navigate("/login");
   };
 
   return (
@@ -39,7 +43,13 @@ const Header = () => {
           <div className="mt-4 bg-white rounded-lg shadow-lg">
             <ul>
               <li className="py-2 hover:bg-cyan-100 hover:text-white">
-                <h4 className="font-medium">로그인</h4>
+                {isLogin ? (
+                  <h4 className="font-medium">로그아웃</h4>
+                ) : (
+                  <h4 className="font-medium" onClick={onHandleClickLogin}>
+                    로그인
+                  </h4>
+                )}
               </li>
               <li className="py-2 border-t hover:bg-cyan-100 hover:text-white">
                 <h4 className="font-medium">마이페이지</h4>
