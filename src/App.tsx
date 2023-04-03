@@ -7,8 +7,6 @@ import Login from "./component/Login/Login";
 import MyPage from "./component/MyPage/MyPage";
 
 function App() {
-  // const [isLogin, setIsLogin] = useState<boolean>(false);
-
   return (
     <BrowserRouter>
       <div className="mx-24 my-5 relative">

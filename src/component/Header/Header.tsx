@@ -29,6 +29,10 @@ const Header = () => {
     navigate("/login");
   };
 
+  const onHandleClickMyPage = () => {
+    navigate("/mypage");
+  };
+
   const onHandleClickLogout = async () => {
     try {
       await signOut(auth);
@@ -72,7 +76,9 @@ const Header = () => {
                 )}
               </li>
               <li className="py-2 border-t hover:bg-cyan-100 hover:text-white">
-                <h4 className="font-medium">마이페이지</h4>
+                <h4 className="font-medium" onClick={onHandleClickMyPage}>
+                  마이페이지
+                </h4>
               </li>
             </ul>
           </div>
