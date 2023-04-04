@@ -1,12 +1,24 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
   // absolute bottom-0 right-0 mb-10 mr-10
+  const isLoggedIn = useSelector((state: any) => state.isLogin.isLoginned);
+
+  //스토어에서 isLoginReducer을 isLogin라고 정의했기 때문에 isLogin이라고 써야한다.
 
   const onHandleClickPlus = () => {
-    navigate("/editor");
+    if (isLoggedIn == false) {
+      alert("로그인 후에 이용이 가능합니다.");
+      navigate("/login");
+      return;
+    }
+    if (isLoggedIn == true) {
+      navigate("/editor");
+      return;
+    }
   };
 
   return (
