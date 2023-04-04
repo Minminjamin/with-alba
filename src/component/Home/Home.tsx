@@ -1,9 +1,10 @@
 import React from "react";
 
 const Home = () => {
+  // absolute bottom-0 right-0 mb-10 mr-10
   return (
     <div className="text-center h-screen">
-      <div className="flex flex-col">
+      <div className="flex flex-col items-center h-1/2">
         <h5 className=" font-extrabold text-xl">
           전국에 알바 찾는 사람 모여요!
         </h5>
@@ -16,8 +17,8 @@ const Home = () => {
         </span>
       </div>
 
-      <div className="flex content-end justify-end">
-        <button className="rounded-full w-14 h-14 bg-red-200 text-5xl text-white border-pink-300 border-2">
+      <div className="absolute bottom-0 right-0 mb-10 mr-10">
+        <button className="rounded-full w-20 h-20 bg-red-200 text-5xl text-white border-pink-300 border-2 z-30">
           +
         </button>
       </div>
