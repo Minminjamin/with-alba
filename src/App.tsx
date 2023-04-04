@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Join from "./component/Login/Join";
 import Login from "./component/Login/Login";
 import MyPage from "./component/MyPage/MyPage";
+import Editor from "./component/Editor/Editor";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/login/join" element={<Join />} />
             <Route path="/mypage" element={<MyPage />} />
+            <Route path="/editor" element={<Editor />} />
           </Routes>
         </div>
       </div>

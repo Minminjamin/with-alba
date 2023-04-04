@@ -1,7 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   // absolute bottom-0 right-0 mb-10 mr-10
+
+  const onHandleClickPlus = () => {
+    navigate("/editor");
+  };
+
   return (
     <div className="text-center h-screen">
       <div className="flex flex-col items-center h-1/2">
@@ -18,7 +25,10 @@ const Home = () => {
       </div>
 
       <div className="absolute bottom-0 right-0 mb-10 mr-10">
-        <button className="rounded-full w-20 h-20 bg-red-200 text-5xl text-white border-pink-300 border-2 z-30">
+        <button
+          className="rounded-full w-20 h-20 bg-red-200 text-5xl text-white border-pink-300 border-2 z-30"
+          onClick={onHandleClickPlus}
+        >
           +
         </button>
       </div>
