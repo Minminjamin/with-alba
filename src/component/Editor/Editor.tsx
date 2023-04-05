@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Map from "./Map";
 
 const Editor = () => {
   const [title, setTitle] = useState<string>(""); //제목
@@ -73,6 +74,7 @@ const Editor = () => {
           />
         </div>
 
+        <Map />
         {/* 
         주소
         상세주소 */}
