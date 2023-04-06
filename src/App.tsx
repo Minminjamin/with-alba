@@ -6,6 +6,7 @@ import Join from "./component/Login/Join";
 import Login from "./component/Login/Login";
 import MyPage from "./component/MyPage/MyPage";
 import Editor from "./component/Editor/Editor";
+import Map from "./component/Editor/Map";
 
 function App() {
   return (
