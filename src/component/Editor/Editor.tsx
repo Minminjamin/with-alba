@@ -143,7 +143,7 @@ const Editor = () => {
           <div id="map" style={{ width: "100%", height: "450px" }} />
         </div>
 
-        <button type="submit">전송</button>
+        <button type="submit">저장하기</button>
       </form>
     </div>
   );
