@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 import "firebase/compat/database";
 import "firebase/compat/firestore";
 import firebase from "firebase/compat/app";
-
+import { getFirestore } from "@firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -23,5 +23,5 @@ firebase.initializeApp(firebaseConfig);
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
-const firestore = firebase.firestore();
+const firestore = getFirestore(app);
 export { app, analytics, auth, firestore };
