@@ -4,8 +4,7 @@ import React, { useState, useEffect } from "react";
 // import firebase from "firebase/app";
 // import "firebase/database";
 // import { auth } from "../../Firebase/FirebaseConfig";
-import firebase from "firebase/app";
-import { getDatabase, ref, set, push } from "firebase/database";
+import { collection, addDoc } from "firebase/firestore";
 
 declare global {
   interface Window {
@@ -31,9 +30,6 @@ const Editor = () => {
   const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Firebase 데이터베이스 연결
-    const database = getDatabase();
-
     // Firebase 데이터베이스에 저장할 객체 생성
     const data = {
       title: title,
@@ -46,15 +42,6 @@ const Editor = () => {
       address: address,
       detailAddress: detailAddress,
     };
-
-    // Firebase 데이터베이스 저장 경로 설정
-    const databaseRef = ref(database, "recruitments");
-    const newRef: any = push(databaseRef);
-
-    // Firebase 데이터베이스에 데이터 저장
-    set(newRef.key, data).then(() => {
-      console.log("데이터 저장 완료");
-    });
   };
   //파이어베이스 처리
 
