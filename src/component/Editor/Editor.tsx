@@ -1,4 +1,11 @@
 import React, { useState, useEffect } from "react";
+// import { getDatabase, ref, set } from "firebase/database";
+// import { uid } from "uid";
+// import firebase from "firebase/app";
+// import "firebase/database";
+// import { auth } from "../../Firebase/FirebaseConfig";
+import firebase from "firebase/app";
+import { getDatabase, ref, set, push } from "firebase/database";
 
 declare global {
   interface Window {
@@ -8,6 +15,7 @@ declare global {
 
 const Editor = () => {
   const [title, setTitle] = useState<string>(""); //제목
+  const [image, setImage] = useState<File | null>(null); //사진
   const [age, setAge] = useState<string>(""); //연령층
   const [qualification, setQualification] = useState<string>(""); //자격 요건
   const [responsibility, setResponsibility] = useState<string>(""); //담당 업무
@@ -20,7 +28,71 @@ const Editor = () => {
     null
   );
 
-  const onHandleSubmit = () => {}; //파이어베이스 처리
+  const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // Firebase 데이터베이스 연결
+    const database = getDatabase();
+
+    // Firebase 데이터베이스에 저장할 객체 생성
+    const data = {
+      title: title,
+      image: image,
+      age: age,
+      qualification: qualification,
+      responsibility: responsibility,
+      preference: preference,
+      deadline: deadline,
+      address: address,
+      detailAddress: detailAddress,
+    };
+
+    // Firebase 데이터베이스 저장 경로 설정
+    const databaseRef = ref(database, "recruitments");
+    const newRef: any = push(databaseRef);
+
+    // Firebase 데이터베이스에 데이터 저장
+    set(newRef.key, data).then(() => {
+      console.log("데이터 저장 완료");
+    });
+    // const user = auth.currentUser;
+
+    // const database = getDatabase();
+    // const newPostKey = uid();
+    // if (user) {
+    //   const { uid, displayName } = user;
+    //   // 글의 고유 키 생성
+
+    //   // 데이터베이스에 저장할 객체 생성
+    //   const postData = {
+    //     author: displayName,
+    //     title,
+    //     image: null, // 파일 업로드를 통해 이미지 업로드 기능을 구현하면 이 부분을 수정합니다.
+    //     age,
+    //     qualification,
+    //     responsibility,
+    //     preference,
+    //     deadline,
+    //     address,
+    //     detailAddress,
+    //   };
+
+    //   // 글을 데이터베이스에 저장합니다.
+    //   set(ref(database, `posts/${newPostKey}`), postData)
+    //     .then(() => {
+    //       console.log("글이 생성되었습니다.");
+    //       // 글 생성 후 필요한 처리를 여기서 합니다.
+    //     })
+    //     .catch((error) => {
+    //       console.error(error);
+    //       // 에러 처리를 여기서 합니다.
+    //     });
+    // } else {
+    //   console.log("로그인이 필요합니다.");
+    //   // 로그인 필요한 경우 처리를 여기서 합니다.
+    // }
+  };
+  //파이어베이스 처리
 
   const onHandleSearchLocation = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -74,7 +146,18 @@ const Editor = () => {
 
         <div>
           <label>사진</label>
-          <input type="file" accept="image/*" />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => {
+              if (e.target.files && e.target.files.length > 0) {
+                setImage(e.target.files[0]);
+              } else {
+                const defaultImg = require("../Editor/asset/null.png");
+                setImage(defaultImg);
+              }
+            }}
+          />
         </div>
 
         <div>
@@ -140,7 +223,7 @@ const Editor = () => {
             onChange={(e) => setDetailAddress(e.target.value)}
           />
 
-          <div id="map" style={{ width: "100%", height: "450px" }} />
+          <div id="map" style={{ width: "400px", height: "250px" }} />
         </div>
 
         <button type="submit">저장하기</button>
