@@ -6,7 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "./redux/config";
-
+import { firestore } from "./Firebase/FirebaseConfig";
+console.log(firestore);
 const store = createStore(rootReducer);
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

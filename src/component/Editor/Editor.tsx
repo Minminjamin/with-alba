@@ -55,42 +55,6 @@ const Editor = () => {
     set(newRef.key, data).then(() => {
       console.log("데이터 저장 완료");
     });
-    // const user = auth.currentUser;
-
-    // const database = getDatabase();
-    // const newPostKey = uid();
-    // if (user) {
-    //   const { uid, displayName } = user;
-    //   // 글의 고유 키 생성
-
-    //   // 데이터베이스에 저장할 객체 생성
-    //   const postData = {
-    //     author: displayName,
-    //     title,
-    //     image: null, // 파일 업로드를 통해 이미지 업로드 기능을 구현하면 이 부분을 수정합니다.
-    //     age,
-    //     qualification,
-    //     responsibility,
-    //     preference,
-    //     deadline,
-    //     address,
-    //     detailAddress,
-    //   };
-
-    //   // 글을 데이터베이스에 저장합니다.
-    //   set(ref(database, `posts/${newPostKey}`), postData)
-    //     .then(() => {
-    //       console.log("글이 생성되었습니다.");
-    //       // 글 생성 후 필요한 처리를 여기서 합니다.
-    //     })
-    //     .catch((error) => {
-    //       console.error(error);
-    //       // 에러 처리를 여기서 합니다.
-    //     });
-    // } else {
-    //   console.log("로그인이 필요합니다.");
-    //   // 로그인 필요한 경우 처리를 여기서 합니다.
-    // }
   };
   //파이어베이스 처리
 
