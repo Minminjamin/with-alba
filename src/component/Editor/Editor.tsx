@@ -116,7 +116,7 @@ const Editor = () => {
               if (e.target.files && e.target.files.length > 0) {
                 setImage(e.target.files[0]);
               } else {
-                const defaultImg = require("../Editor/asset/null.png");
+                const defaultImg = require("../../asset/null.png");
                 setImage(defaultImg);
               }
             }}
