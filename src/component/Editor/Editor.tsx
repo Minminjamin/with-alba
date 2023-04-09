@@ -50,8 +50,8 @@ const Editor = () => {
         detailAddress: detailAddress,
       };
 
-      // 해당 유저의 접근 권한 확인
-      const docRef = doc(firestore, "posting", user);
+      //유저 콜렉션에 해당 유저의 uid의 해당유저가 포스팅한 것에 제목으로 구분
+      const docRef = doc(firestore, "users", user, "posting", `${title}`);
       setDoc(docRef, data);
     } else {
       alert("로그인해주세요");
