@@ -101,18 +101,9 @@ const Editor = () => {
   }, []);
 
   return (
-    <div>
-      <form onSubmit={onHandleSubmit}>
-        <div>
-          <label>제목</label>
-          <input
-            placeholder="제목을 입력해주세요."
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </div>
-
-        <div>
+    <div className="flex justify-center ">
+      <form onSubmit={onHandleSubmit} className="px-10 py-20 space-y-8">
+        <div className="flex flex-col space-y-2">
           <label>사진</label>
           <input
             type="file"
@@ -125,63 +116,87 @@ const Editor = () => {
                 setImage(defaultImg);
               }
             }}
+            className="w-full"
           />
         </div>
 
-        <div>
+        <div className="flex flex-col space-y-2">
+          <label>제목</label>
+          <input
+            placeholder="제목을 입력해주세요."
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="border-solid border-2 border-gray-300 rounded-md w-full"
+          />
+        </div>
+
+        <div className="flex flex-col space-y-2">
           <label>모집 연령층</label>
           <input
             placeholder="모집 연령층을 입력해주세요"
             value={age}
             onChange={(e) => setAge(e.target.value)}
+            className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
 
-        <div>
+        <div className="flex flex-col space-y-2">
           <label>자격 요건</label>
           <textarea
             placeholder="자격 요건을 입력해주세요"
             value={qualification}
             onChange={(e) => setQualification(e.target.value)}
+            className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
 
-        <div>
+        <div className="flex flex-col space-y-2">
           <label>담당 업무</label>
           <textarea
             placeholder="담당 업무를 입력해주세요"
             value={responsibility}
             onChange={(e) => setResponsibility(e.target.value)}
+            className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
 
-        <div>
+        <div className="flex flex-col space-y-2">
           <label>우대 사항</label>
           <textarea
             placeholder="우대 사항 입력해주세요"
             value={preference}
             onChange={(e) => setPreference(e.target.value)}
+            className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
 
-        <div>
+        <div className="flex flex-col space-y-2">
           <label>모집 마감일</label>
           <input
             placeholder="모집 마감일을 입력해주세요."
             value={deadline}
             onChange={(e) => setDeadline(e.target.value)}
+            className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
 
-        <div>
-          <div>
+        <div className="flex flex-col space-y-4">
+          <div className="flex flex-col space-y-2">
             <label>주소</label>
-            <input
-              placeholder="주소를 입력해주세요."
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
-            <button onClick={onHandleSearchLocation}>검색하기</button>
+            <div className="flex justify-between">
+              <input
+                placeholder="주소를 입력해주세요."
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                className="border-solid border-2 border-gray-300 rounded-md w-3/4 "
+              />
+              <button
+                onClick={onHandleSearchLocation}
+                className="w-1/5 rounded-md bg-slate-200 border-solid border-2 border-slate-300"
+              >
+                검색
+              </button>
+            </div>
           </div>
 
           <label>상세 주소</label>
@@ -189,12 +204,20 @@ const Editor = () => {
             placeholder="상세 주소를 입력해주세요."
             value={detailAddress}
             onChange={(e) => setDetailAddress(e.target.value)}
+            className="border-solid border-2 border-gray-300 rounded-md "
           />
 
           <div id="map" style={{ width: "400px", height: "250px" }} />
         </div>
 
-        <button type="submit">저장하기</button>
+        <div className="w-full flex justify-center">
+          <button
+            type="submit"
+            className="rounded-md bg-green-500 w-1/4 text-white hover:bg-green-700"
+          >
+            업로드
+          </button>
+        </div>
       </form>
     </div>
   );
