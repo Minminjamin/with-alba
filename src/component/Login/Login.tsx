@@ -44,10 +44,10 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen w-full">
       <form
         onSubmit={onHandleLogin}
-        className="border-solid border-2 border-gray-300 h-2/3 w-1/3 flex flex-col justify-center px-10 py-20 space-y-6"
+        className="border-solid border-2 border-gray-300 h-3/5 lg:w-1/3 flex flex-col justify-center px-10 py-20 space-y-8"
       >
         <div className="text-center">
           <h3 className=" text-xl font-bold">로그인</h3>
