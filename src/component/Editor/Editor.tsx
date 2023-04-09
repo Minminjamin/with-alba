@@ -36,6 +36,7 @@ const Editor = () => {
 
     const auth = getAuth();
     const currentUser = auth.currentUser; //현재 로그인한 사용자의 정보
+
     if (isLoggedIn && currentUser) {
       //사용자가 로그인했나 확인
       setUser(currentUser.uid);
