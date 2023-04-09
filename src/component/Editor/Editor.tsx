@@ -3,6 +3,7 @@ import { getAuth } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { firestore } from "../../Firebase/FirebaseConfig";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 declare global {
   interface Window {
@@ -21,6 +22,8 @@ const Editor = () => {
   const [address, setAddress] = useState<string>(""); //위치
   const [detailAddress, setDetailAddress] = useState<string>(""); //상세주소
 
+  const isLoggedIn = useSelector((state: any) => state.isLogin.isLoginned);
+
   const [user, setUser] = useState<string | null>(null);
   const [markerPosition, setMarkerPosition] = useState<[number, number] | null>(
     null
@@ -33,7 +36,7 @@ const Editor = () => {
 
     const auth = getAuth();
     const currentUser = auth.currentUser; //현재 로그인한 사용자의 정보
-    if (currentUser) {
+    if (isLoggedIn && currentUser) {
       //사용자가 로그인했나 확인
       setUser(currentUser.uid);
       const user: string = currentUser.uid;
