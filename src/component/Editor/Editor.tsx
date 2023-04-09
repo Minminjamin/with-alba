@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-// import { getDatabase, ref, set } from "firebase/database";
-// import { uid } from "uid";
-// import firebase from "firebase/app";
-// import "firebase/database";
-// import { auth } from "../../Firebase/FirebaseConfig";
-import { collection, addDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { firestore } from "../../Firebase/FirebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 declare global {
   interface Window {
@@ -23,25 +21,42 @@ const Editor = () => {
   const [address, setAddress] = useState<string>(""); //위치
   const [detailAddress, setDetailAddress] = useState<string>(""); //상세주소
 
+  const [user, setUser] = useState<string | null>(null);
   const [markerPosition, setMarkerPosition] = useState<[number, number] | null>(
     null
   );
 
-  const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const navigator = useNavigate();
+
+  const onHandleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Firebase 데이터베이스에 저장할 객체 생성
-    const data = {
-      title: title,
-      image: image,
-      age: age,
-      qualification: qualification,
-      responsibility: responsibility,
-      preference: preference,
-      deadline: deadline,
-      address: address,
-      detailAddress: detailAddress,
-    };
+    const auth = getAuth();
+    const currentUser = auth.currentUser;
+    if (currentUser) {
+      setUser(currentUser.uid);
+      const user: string = currentUser.uid;
+
+      // Firebase 데이터베이스에 저장할 객체 생성
+      const data = {
+        title: title,
+        image: image,
+        age: age,
+        qualification: qualification,
+        responsibility: responsibility,
+        preference: preference,
+        deadline: deadline,
+        address: address,
+        detailAddress: detailAddress,
+      };
+
+      // 해당 유저의 접근 권한 확인
+      const docRef = doc(firestore, "posting", user);
+      setDoc(docRef, data);
+    } else {
+      alert("로그인해주세요");
+      navigator("/login");
+    }
   };
   //파이어베이스 처리
 
