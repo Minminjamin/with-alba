@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../Firebase/FirebaseConfig";
+import { auth } from "../../api/Firebase/FirebaseConfig";
 
 const Join = () => {
   const [name, setName] = useState<string>("");

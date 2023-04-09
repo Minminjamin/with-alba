@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { signOut } from "firebase/auth";
-import { auth } from "../../Firebase/FirebaseConfig";
+import { auth } from "../../api/Firebase/FirebaseConfig";
 import { logout } from "../../redux/modules/isLogin/isLoginAction";
 
 const Header = () => {

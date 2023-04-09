@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../Firebase/FirebaseConfig";
+import { auth } from "../../api/Firebase/FirebaseConfig";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { login } from "../../redux/modules/isLogin/isLoginAction";
 
