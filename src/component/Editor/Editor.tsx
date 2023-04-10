@@ -4,6 +4,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useInput } from "../../hooks/useInput";
 
 declare global {
   interface Window {
@@ -12,15 +13,7 @@ declare global {
 }
 
 const Editor = () => {
-  const [title, setTitle] = useState<string>(""); //제목
-  const [image, setImage] = useState<File | null>(null); //사진
-  const [age, setAge] = useState<string>(""); //연령층
-  const [qualification, setQualification] = useState<string>(""); //자격 요건
-  const [responsibility, setResponsibility] = useState<string>(""); //담당 업무
-  const [preference, setPreference] = useState<string>(""); //우대 사항
-  const [deadline, setDeadline] = useState<string>(""); //마감일
-  const [address, setAddress] = useState<string>(""); //위치
-  const [detailAddress, setDetailAddress] = useState<string>(""); //상세주소
+  const { inputValue, onHandleChange } = useInput();
 
   const isLoggedIn = useSelector((state: any) => state.isLogin.isLoginned);
 
@@ -44,19 +37,25 @@ const Editor = () => {
 
       // Firebase 데이터베이스에 저장할 객체 생성
       const data = {
-        title: title,
-        image: image,
-        age: age,
-        qualification: qualification,
-        responsibility: responsibility,
-        preference: preference,
-        deadline: deadline,
-        address: address,
-        detailAddress: detailAddress,
+        title: inputValue.title,
+        image: inputValue.image,
+        age: inputValue.age,
+        qualification: inputValue.qualification,
+        responsibility: inputValue.responsibility,
+        preference: inputValue.preference,
+        deadline: inputValue.deadline,
+        address: inputValue.address,
+        detailAddress: inputValue.detailAddress,
       };
 
       //유저 콜렉션에 해당 유저의 uid의 해당유저가 포스팅한 것에 제목으로 구분
-      const docRef = doc(firestore, "users", user, "posting", `${title}`);
+      const docRef = doc(
+        firestore,
+        "users",
+        user,
+        "posting",
+        `${inputValue.title}`
+      );
       setDoc(docRef, data);
       navigator("/");
     } else {
@@ -78,7 +77,7 @@ const Editor = () => {
       }); // 초기화
     }
     const geocoder = new kakao.maps.services.Geocoder(); // 지도 검색 함수 생성
-    geocoder.addressSearch(address, (result, status) => {
+    geocoder.addressSearch(inputValue.address, (result, status) => {
       //지도 검색
       if (status === kakao.maps.services.Status.OK) {
         const position = new kakao.maps.LatLng(
@@ -112,14 +111,8 @@ const Editor = () => {
           <input
             type="file"
             accept="image/*"
-            onChange={(e) => {
-              if (e.target.files && e.target.files.length > 0) {
-                setImage(e.target.files[0]);
-              } else {
-                const defaultImg = require("../../asset/null.png");
-                setImage(defaultImg);
-              }
-            }}
+            name="image"
+            onChange={onHandleChange}
             className="w-full"
           />
         </div>
@@ -128,8 +121,8 @@ const Editor = () => {
           <label>제목</label>
           <input
             placeholder="제목을 입력해주세요."
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            name="title"
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md w-full"
           />
         </div>
@@ -138,8 +131,8 @@ const Editor = () => {
           <label>모집 연령층</label>
           <input
             placeholder="모집 연령층을 입력해주세요"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
+            name="age"
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -148,8 +141,8 @@ const Editor = () => {
           <label>자격 요건</label>
           <textarea
             placeholder="자격 요건을 입력해주세요"
-            value={qualification}
-            onChange={(e) => setQualification(e.target.value)}
+            name="qualification"
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -158,8 +151,8 @@ const Editor = () => {
           <label>담당 업무</label>
           <textarea
             placeholder="담당 업무를 입력해주세요"
-            value={responsibility}
-            onChange={(e) => setResponsibility(e.target.value)}
+            name="responsibility"
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -168,8 +161,8 @@ const Editor = () => {
           <label>우대 사항</label>
           <textarea
             placeholder="우대 사항 입력해주세요"
-            value={preference}
-            onChange={(e) => setPreference(e.target.value)}
+            name="preference"
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -178,8 +171,8 @@ const Editor = () => {
           <label>모집 마감일</label>
           <input
             placeholder="모집 마감일을 입력해주세요."
-            value={deadline}
-            onChange={(e) => setDeadline(e.target.value)}
+            name="deadline"
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -190,8 +183,8 @@ const Editor = () => {
             <div className="flex justify-between">
               <input
                 placeholder="주소를 입력해주세요."
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
+                name="address"
+                onChange={onHandleChange}
                 className="border-solid border-2 border-gray-300 rounded-md w-3/4 "
               />
               <button
@@ -206,8 +199,8 @@ const Editor = () => {
           <label>상세 주소</label>
           <input
             placeholder="상세 주소를 입력해주세요."
-            value={detailAddress}
-            onChange={(e) => setDetailAddress(e.target.value)}
+            name="detailAddress"
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
 
