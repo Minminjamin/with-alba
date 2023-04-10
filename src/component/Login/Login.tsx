@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../../api/Firebase/FirebaseConfig";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { login } from "../../redux/modules/isLogin/isLoginAction";
+import { useInput } from "../../hooks/useInput";
 
 const Login = () => {
-  const [id, setId] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const { inputValue, onHandleChange } = useInput();
 
   const navigate = useNavigate();
 
@@ -21,17 +21,21 @@ const Login = () => {
   const onHandleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (id == "") {
+    if (inputValue.id == "") {
       alert("아이디를 입력해주세요");
       return;
     }
-    if (password == "") {
+    if (inputValue.password == "") {
       alert("비밀번호를 입력해주세요");
       return;
     }
 
     try {
-      await signInWithEmailAndPassword(auth, `${id}@withalba.com`, password);
+      await signInWithEmailAndPassword(
+        auth,
+        `${inputValue.id}@withalba.com`,
+        inputValue.password
+      );
       dispatch(login());
       navigate("/");
     } catch (error: any) {
@@ -57,8 +61,8 @@ const Login = () => {
           <label>아이디(ID)</label>
           <input
             placeholder="아이디를 입력해주세요."
-            value={id}
-            onChange={(e) => setId(e.target.value)}
+            name="id"
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -67,8 +71,8 @@ const Login = () => {
           <label>비밀번호(Password)</label>
           <input
             placeholder="비밀번호를 입력해주세요."
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
