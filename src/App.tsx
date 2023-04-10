@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Header from "./component/Header/Header";
-import Home from "./component/Home/Home";
+import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Join from "./component/Login/Join";
-import Login from "./component/Login/Login";
-import MyPage from "./component/MyPage/MyPage";
-import Editor from "./component/Editor/Editor";
+import Join from "./components/Login/Join";
+import Login from "./components/Login/Login";
+import MyPage from "./components/MyPage/MyPage";
+import Editor from "./components/Editor/Editor";
 
 // import { firestore } from "./Firebase/FirebaseConfig";
 // import { collection, getDocs } from "firebase/firestore";
