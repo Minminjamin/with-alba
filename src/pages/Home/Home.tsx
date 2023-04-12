@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import AlbaCard from "../AlbaCard/AlbaCard";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ const Home = () => {
         </span>
       </div>
 
+      <AlbaCard />
       <div className="absolute bottom-0 right-0 mb-10 mr-10">
         <button
           className="rounded-full w-20 h-20 bg-red-200 text-5xl text-white border-pink-300 border-2 z-30"
