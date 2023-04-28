@@ -38,7 +38,7 @@ const Editor = () => {
       // Firebase 데이터베이스에 저장할 객체 생성
       const data = {
         title: inputValue.title,
-        image: inputValue.image,
+        image: inputValue.image || "",
         age: inputValue.age,
         qualification: inputValue.qualification,
         responsibility: inputValue.responsibility,
@@ -49,13 +49,14 @@ const Editor = () => {
       };
 
       //유저 콜렉션에 해당 유저의 uid의 해당유저가 포스팅한 것에 제목으로 구분
-      const docRef = doc(
-        firestore,
-        "users",
-        user,
-        "posting",
-        `${inputValue.title}`
-      );
+      // const docRef = doc(
+      //   firestore,
+      //   "users",
+      //   user,
+      //   "posting",
+      //   `${inputValue.title}`
+      // );
+      const docRef = doc(firestore, user, `${inputValue.title}`);
       setDoc(docRef, data);
       navigator("/");
     } else {
