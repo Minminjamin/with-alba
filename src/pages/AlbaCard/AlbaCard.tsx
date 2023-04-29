@@ -10,9 +10,9 @@ const AlbaCard = () => {
       const querySnapshot = await getDocs(
         collectionGroup(firestore, "posting")
       );
-      const data = querySnapshot.docs.map((doc) => doc.data);
+      const data = querySnapshot.docs.map((doc) => doc.data());
       setPostingData(data);
-      // await console.log(postingData);
+      // await console.log(data);
     };
 
     getPostings();
@@ -20,7 +20,14 @@ const AlbaCard = () => {
 
   return (
     <div>
-      <span>This is alba component</span>
+      {postingData.map((posting: any) => (
+        <div key={posting.title}>
+          <h3>{posting.title}</h3>
+          <span>나이 : {posting.age}</span>
+          <span>마감일 : {posting.deadline}</span>
+        </div>
+      ))}
+      {/* <span>This is alba component</span> */}
     </div>
   );
 };
