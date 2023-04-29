@@ -1,16 +1,18 @@
 import { collection, collectionGroup, getDocs } from "@firebase/firestore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
 
 const AlbaCard = () => {
+  const [postingData, setPostingData] = useState<any>([]);
+
   useEffect(() => {
     const getPostings = async () => {
       const querySnapshot = await getDocs(
         collectionGroup(firestore, "posting")
       );
-      querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
-      });
+      const data = querySnapshot.docs.map((doc) => doc.data);
+      setPostingData(data);
+      // await console.log(postingData);
     };
 
     getPostings();
