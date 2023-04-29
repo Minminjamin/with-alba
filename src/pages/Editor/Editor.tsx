@@ -56,7 +56,14 @@ const Editor = () => {
       //   "posting",
       //   `${inputValue.title}`
       // );
-      const docRef = doc(firestore, user, `${inputValue.title}`);
+      // const docRef = doc(firestore, user, `${inputValue.title}`);
+      const docRef = doc(
+        firestore,
+        "db",
+        user,
+        "posting",
+        `${inputValue.title}`
+      );
       setDoc(docRef, data);
       navigator("/");
     } else {
