@@ -25,7 +25,7 @@ const AlbaCard = () => {
           key={posting.title}
           className="rounded-lg border-2 w-1/4 flex flex-col items-start h-52 content-between justify-around shadow-lg cursor-pointer"
         >
-          <h3 className="font-bold text-xl text-center justify-items-center">
+          <h3 className="font-bold text-xl text-center w-full justify-items-center">
             {posting.title}
           </h3>
           <span className="ml-4">{posting.deadline}</span>
