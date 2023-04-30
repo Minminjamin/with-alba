@@ -28,7 +28,7 @@ const AlbaCard = () => {
           <h3 className="font-bold text-xl text-center justify-items-center">
             {posting.title}
           </h3>
-          <span className="ml-4">{posting.age}</span>
+          <span className="ml-4">{posting.deadline}</span>
           <span className="ml-4">나이 : {posting.age}</span>
           <span className="ml-4">{posting.address}</span>
         </div>
