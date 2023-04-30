@@ -27,7 +27,6 @@ const AlbaCard = () => {
           <span>마감일 : {posting.deadline}</span>
         </div>
       ))}
-      {/* <span>This is alba component</span> */}
     </div>
   );
 };
