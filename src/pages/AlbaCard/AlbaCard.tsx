@@ -1,4 +1,4 @@
-import { collection, collectionGroup, getDocs } from "@firebase/firestore";
+import { collectionGroup, getDocs } from "@firebase/firestore";
 import { useEffect, useState } from "react";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
 
@@ -19,12 +19,18 @@ const AlbaCard = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex grid-rows-3 justify-around ">
       {postingData.map((posting: any) => (
-        <div key={posting.title}>
-          <h3>{posting.title}</h3>
-          <span>나이 : {posting.age}</span>
-          <span>마감일 : {posting.deadline}</span>
+        <div
+          key={posting.title}
+          className="rounded-lg border-2 w-1/4 flex flex-col items-start h-52 content-between justify-around shadow-lg cursor-pointer"
+        >
+          <h3 className="font-bold text-xl text-center justify-items-center">
+            {posting.title}
+          </h3>
+          <span className="ml-4">{posting.age}</span>
+          <span className="ml-4">나이 : {posting.age}</span>
+          <span className="ml-4">{posting.address}</span>
         </div>
       ))}
     </div>
