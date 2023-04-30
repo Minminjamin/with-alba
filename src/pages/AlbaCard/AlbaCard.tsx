@@ -19,7 +19,7 @@ const AlbaCard = () => {
   }, []);
 
   return (
-    <div className="flex grid-rows-3 justify-around ">
+    <div className="flex grid-rows-3 justify-around">
       {postingData.map((posting: any) => (
         <div
           key={posting.title}
