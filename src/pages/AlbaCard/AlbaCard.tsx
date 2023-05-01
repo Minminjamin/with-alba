@@ -1,9 +1,11 @@
 import { collectionGroup, getDocs } from "@firebase/firestore";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
 
 const AlbaCard = () => {
   const [postingData, setPostingData] = useState<any>([]);
+  const navigator = useNavigate();
 
   useEffect(() => {
     const getPostings = async () => {
@@ -18,11 +20,21 @@ const AlbaCard = () => {
     getPostings();
   }, []);
 
+  const HandleClickPosting = (
+    e: React.MouseEvent<HTMLDivElement>,
+    title: string
+  ) => {
+    e.preventDefault();
+
+    navigator(`/posting/${title.trim()}`);
+  };
+
   return (
     <div className="flex grid-rows-3 justify-around">
       {postingData.map((posting: any) => (
         <div
           key={posting.title}
+          onClick={(e) => HandleClickPosting(e, posting.title)}
           className="rounded-lg border-2 w-1/4 flex flex-col items-start h-52 content-between justify-around shadow-lg cursor-pointer"
         >
           <h3 className="font-bold text-xl text-center w-full justify-items-center">
