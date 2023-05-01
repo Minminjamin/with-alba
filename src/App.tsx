@@ -6,6 +6,7 @@ import Join from "./pages/Login/Join";
 import Login from "./pages/Login/Login";
 import MyPage from "./pages/MyPage/MyPage";
 import Editor from "./pages/Editor/Editor";
+import AlbaData from "./pages/AlbaData/AlbaData";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Header />
         <div className="">
           <Routes>
+            <Route path={`/posting/:id`} element={<AlbaData />} />
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/login/join" element={<Join />} />
