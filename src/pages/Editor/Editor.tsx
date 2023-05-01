@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { collection, doc, setDoc } from "firebase/firestore";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -34,7 +34,16 @@ const Editor = () => {
       //사용자가 로그인했나 확인
       setUser(currentUser.uid);
       const user: string = currentUser.uid;
-
+      const docRef = doc(
+        firestore,
+        "db",
+        user,
+        "posting",
+        `${inputValue.title}`
+      );
+      const ref = collection(firestore, "db");
+      const newDocRef = doc(ref);
+      const newDocId = newDocRef.id;
       // Firebase 데이터베이스에 저장할 객체 생성
       const data = {
         title: inputValue.title,
@@ -46,6 +55,7 @@ const Editor = () => {
         deadline: inputValue.deadline,
         address: inputValue.address,
         detailAddress: inputValue.detailAddress,
+        dataId: newDocId,
       };
 
       //유저 콜렉션에 해당 유저의 uid의 해당유저가 포스팅한 것에 제목으로 구분
@@ -57,14 +67,9 @@ const Editor = () => {
       //   `${inputValue.title}`
       // );
       // const docRef = doc(firestore, user, `${inputValue.title}`);
-      const docRef = doc(
-        firestore,
-        "db",
-        user,
-        "posting",
-        `${inputValue.title}`
-      );
+
       setDoc(docRef, data);
+
       navigator("/");
     } else {
       alert("로그인해주세요");
