@@ -52,6 +52,7 @@ const Editor = () => {
         deadline: inputValue.deadline,
         address: inputValue.address,
         detailAddress: inputValue.detailAddress,
+        userId: user,
       };
 
       setDoc(docRef, data);
