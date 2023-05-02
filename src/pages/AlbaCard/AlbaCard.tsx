@@ -22,11 +22,12 @@ const AlbaCard = () => {
 
   const HandleClickPosting = (
     e: React.MouseEvent<HTMLDivElement>,
-    title: string
+    title: string,
+    userId: string
   ) => {
     e.preventDefault();
 
-    navigator(`/posting/${title.trim()}`);
+    navigator(`${userId}/posting/${title.trim()}`);
   };
 
   return (
@@ -34,7 +35,7 @@ const AlbaCard = () => {
       {postingData.map((posting: any) => (
         <div
           key={posting.title}
-          onClick={(e) => HandleClickPosting(e, posting.title)}
+          onClick={(e) => HandleClickPosting(e, posting.title, posting.userId)}
           className="rounded-lg border-2 w-1/4 flex flex-col items-start h-52 content-between justify-around shadow-lg cursor-pointer"
         >
           <h3 className="font-bold text-xl text-center w-full justify-items-center">
