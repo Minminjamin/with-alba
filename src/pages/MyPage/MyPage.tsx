@@ -15,7 +15,7 @@ const MyPage = () => {
 
       const myPostingData = myPostingSnapShot.docs.map((doc) => doc.data());
       await setMyData(myPostingData);
-      await console.log(myData);
+      // await console.log(myData);
     };
 
     getMyPostings();
