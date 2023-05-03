@@ -49,64 +49,80 @@ const AlbaData = () => {
       });
     }
   }, [albaData, markerPosition]);
-
+  // px-10 py-20 space-y-8
   return (
-    <div className="flex w-full justify-center">
+    <div className="flex justify-center ">
       {albaData ? (
-        <div>
-          <img src={require("../../asset/img/basicImg.png")} />
-          <div>
-            <h6>제목</h6>
-            <span>{albaData.title}</span>
+        <div className="px-10 py-20 space-y-8">
+          <img
+            src={require("../../asset/img/basicImg.png")}
+            className="w-full"
+          />
+
+          <div className="w-full">
+            <h6 className="text-lg font-bold">제목</h6>
+            <span className="mt-3 block">{albaData.title}</span>
           </div>
 
-          <div>
-            <h6>모집 연령층</h6>
-            <span>{albaData.age}</span>
+          <div className="w-full">
+            <h6 className="text-lg font-bold">모집 연령층</h6>
+            <span className="mt-3 block">{albaData.age}</span>
           </div>
 
-          <div>
-            <h6>자격 요건</h6>
-            <span>{albaData.qualification}</span>
+          <div className="w-full">
+            <h6 className="text-lg font-bold">자격 요건</h6>
+            <span className="mt-3 block">{albaData.qualification}</span>
           </div>
 
-          <div>
-            <h6>담당 업무</h6>
-            <span>{albaData.responsibility}</span>
+          <div className="w-full">
+            <h6 className="text-lg font-bold">담당 업무</h6>
+            <span className="mt-3 block">{albaData.responsibility}</span>
           </div>
 
-          <div>
-            <h6>우대 사항</h6>
-            <span>{albaData.preference}</span>
+          <div className="w-full">
+            <h6 className="text-lg font-bold">우대 사항</h6>
+            <span className="mt-3 block">{albaData.preference}</span>
           </div>
 
-          <div>
-            <h6>마감일</h6>
-            <span>{albaData.deadline}</span>
+          <div className="w-full">
+            <h6 className="text-lg font-bold">마감일</h6>
+            <span className="mt-3 block">{albaData.deadline}</span>
           </div>
 
-          <div>
-            <h6>위치</h6>
-            <div id="map" style={{ width: "400px", height: "250px" }} />
-            <span>
+          <div className="w-full">
+            <h6 className="text-lg font-bold">위치</h6>
+            <div
+              id="map"
+              style={{ width: "400px", height: "250px" }}
+              className="mt-3 w-full"
+            />
+            <span className="mt-3 block">
               {albaData.address} {albaData.detailAddress}
             </span>
           </div>
 
-          <div>
-            <input type="checkbox" />
-            <span>한 번 지원한 공고는 철회가 불가능합니다.</span>
+          <div className="w-full flex justify-center">
+            <input type="checkbox" className="shadow-md" />
+            <span className=" mx-3">
+              한 번 지원한 공고는 철회가 불가능합니다.
+            </span>
           </div>
 
-          <div>
-            <button>지원하기</button>
+          <div className="w-full flex justify-center">
+            <button className="bg-sky-500 rounded-md text-white hover:bg-sky-800 w-2/5">
+              지원하기
+            </button>
           </div>
         </div>
       ) : (
-        <div>
-          <span>데이터가 없습니다.</span>
-          <span>잠시 기다려주세요.</span>
-          <span>그래도 데이터가 나타나지 않으면 새로고침을 해주세요.</span>
+        <div className="flex justify-center flex-col text-center space-y-5 mt-36">
+          <span className="w-full">데이터가 없습니다.</span>
+          <span className="w-full font-bold text-red-600">
+            잠시 기다려주세요.
+          </span>
+          <span className="w-full">
+            그래도 데이터가 나타나지 않으면 새로고침을 해주세요.
+          </span>
         </div>
       )}
     </div>
