@@ -1,33 +1,31 @@
-import {
-  collection,
-  collectionGroup,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  where,
-} from "@firebase/firestore";
+import { doc, getDoc, DocumentData } from "@firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
 
 const AlbaData = () => {
-  const { id } = useParams();
-  const [albaData, setAlbaData] = useState<any>(null);
+  const { userId, id } = useParams<any>();
+  const [albaData, setAlbaData] = useState<DocumentData | null>(null);
 
   useEffect(() => {
     const getPostingData = async () => {
-      // const postingData = collection(firestore, "posting");
-      // const postingDoc = doc(postingData, id);
-      // const getPostingData = await getDoc(postingDoc);
-      // if (getPostingData.exists()) {
-      //   setAlbaData(getPostingData.data());
-      //   console.log("this is ", albaData);
+      const docRef = doc(firestore, `db/${userId}/posting/${id}`); //벡틱으로 오류를 제거
+
+      getDoc(docRef).then((docSnap) => {
+        if (docSnap.exists()) {
+          setAlbaData(docSnap.data());
+        }
+      });
+      // const docSnap = await getDoc(docRef);
+
+      // if (docSnap.exists()) {
+      //   setAlbaData(docSnap.data());
       // }
+      // await console.log(albaData);
     };
 
     getPostingData();
-  }, [id]);
+  }, [firestore, userId, id]);
 
   return (
     <div>
