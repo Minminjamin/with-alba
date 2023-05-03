@@ -104,6 +104,10 @@ const AlbaData = () => {
             <input type="checkbox" />
             <span>한 번 지원한 공고는 철회가 불가능합니다.</span>
           </div>
+
+          <div>
+            <button>지원하기</button>
+          </div>
         </div>
       ) : (
         <div>
