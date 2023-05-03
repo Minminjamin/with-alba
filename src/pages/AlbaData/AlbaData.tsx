@@ -1,17 +1,19 @@
-import { doc, getDoc, DocumentData } from "@firebase/firestore";
-import React, { ReactComponentElement, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { doc, getDoc } from "@firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
 
 const AlbaData = () => {
   const { userId, id } = useParams<any>();
-
+  const navigate = useNavigate();
   const [albaData, setAlbaData] = useState<any>();
   const [markerPosition, setMarkerPosition] = useState<[number, number] | null>(
     null
   );
   const [isChecked, setIsChecked] = useState<boolean>(false); //useInput 훅 사용이 가능한가?
 
+  const isLoggedIn = useSelector((state: any) => state.isLogin.isLoginned);
   useEffect(() => {
     const getPostingData = async () => {
       const docRef = doc(firestore, `db/${userId}/posting/${id}`); //벡틱으로 오류를 제거
@@ -52,6 +54,21 @@ const AlbaData = () => {
       });
     }
   }, [albaData, markerPosition]);
+
+  const onHandleButton = () => {
+    if (isLoggedIn == false) {
+      alert("로그인 후에 이용이 가능합니다.");
+      navigate("/login");
+    }
+    if (isChecked == false) {
+      alert("체크 박스에 동의를 해주세요.");
+      return;
+    }
+    if (isLoggedIn == true && isChecked == true) {
+      alert(`${albaData.title}에 지원하셨습니다.`);
+      navigate(-1);
+    }
+  };
 
   return (
     <div className="flex justify-center ">
@@ -117,9 +134,11 @@ const AlbaData = () => {
           </div>
 
           <div className="w-full flex justify-center">
-            <button className="bg-sky-500 rounded-md text-white hover:bg-sky-800 w-2/5">
+            <button
+              className="bg-sky-500 rounded-md text-white hover:bg-sky-800 w-2/5"
+              onClick={onHandleButton}
+            >
               지원하기
-              {/* 로그인이 되어있지않으면 로그인창으로 이동 */}
             </button>
           </div>
         </div>
