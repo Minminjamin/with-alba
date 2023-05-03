@@ -49,7 +49,7 @@ const AlbaData = () => {
       });
     }
   }, [albaData, markerPosition]);
-  // px-10 py-20 space-y-8
+
   return (
     <div className="flex justify-center ">
       {albaData ? (
