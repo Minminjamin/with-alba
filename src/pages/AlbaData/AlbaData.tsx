@@ -23,8 +23,8 @@ const AlbaData = () => {
     getPostingData();
   }, [firestore, userId, id]);
 
-  setTimeout(() => {
-    if (albaData) {
+  useEffect(() => {
+    if (albaData && markerPosition === null) {
       const container = document.getElementById("map"); //지도 생성
       let map: kakao.maps.Map | null = null; //오류를 막기 위해서 if 위에 선언
       if (container !== null) {
@@ -48,7 +48,7 @@ const AlbaData = () => {
         }
       });
     }
-  }, 1000);
+  }, [albaData, markerPosition]);
 
   return (
     <div className="flex w-full justify-center">
