@@ -99,6 +99,11 @@ const AlbaData = () => {
               {albaData.address} {albaData.detailAddress}
             </span>
           </div>
+
+          <div>
+            <input type="checkbox" />
+            <span>한 번 지원한 공고는 철회가 불가능합니다.</span>
+          </div>
         </div>
       ) : (
         <div>
