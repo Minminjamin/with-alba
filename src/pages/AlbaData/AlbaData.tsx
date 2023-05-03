@@ -64,6 +64,14 @@ const AlbaData = () => {
             <h6>마감일</h6>
             <span>{albaData.deadline}</span>
           </div>
+
+          <div>
+            <h6>위치</h6>
+            <div id="map" style={{ width: "400px", height: "250px" }} />
+            <span>
+              {albaData.address} {albaData.detailAddress}
+            </span>
+          </div>
         </div>
       ) : (
         <div>
