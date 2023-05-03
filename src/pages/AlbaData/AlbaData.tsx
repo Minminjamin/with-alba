@@ -1,5 +1,5 @@
 import { doc, getDoc, DocumentData } from "@firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React, { ReactComponentElement, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
 
@@ -10,6 +10,7 @@ const AlbaData = () => {
   const [markerPosition, setMarkerPosition] = useState<[number, number] | null>(
     null
   );
+  const [isChecked, setIsChecked] = useState<boolean>(false); //useInput 훅 사용이 가능한가?
 
   useEffect(() => {
     const getPostingData = async () => {
@@ -104,7 +105,12 @@ const AlbaData = () => {
           </div>
 
           <div className="w-full flex justify-center">
-            <input type="checkbox" className="shadow-md" />
+            <input
+              type="checkbox"
+              className="shadow-md"
+              checked={isChecked}
+              onChange={() => setIsChecked(!isChecked)}
+            />
             <span className=" mx-3">
               한 번 지원한 공고는 철회가 불가능합니다.
             </span>
@@ -113,6 +119,7 @@ const AlbaData = () => {
           <div className="w-full flex justify-center">
             <button className="bg-sky-500 rounded-md text-white hover:bg-sky-800 w-2/5">
               지원하기
+              {/* 로그인이 되어있지않으면 로그인창으로 이동 */}
             </button>
           </div>
         </div>
