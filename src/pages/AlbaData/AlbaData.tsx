@@ -34,10 +34,39 @@ const AlbaData = () => {
 
   return (
     <div>
-      <img src={require("../../asset/img/basicImg.png")} />
-      <h6>제목</h6>
       {albaData ? (
-        <span>{albaData.title}</span>
+        <div>
+          <img src={require("../../asset/img/basicImg.png")} />
+          <div>
+            <h6>제목</h6>
+            <span>{albaData.title}</span>
+          </div>
+
+          <div>
+            <h6>모집 연령층</h6>
+            <span>{albaData.age}</span>
+          </div>
+
+          <div>
+            <h6>자격 요건</h6>
+            <span>{albaData.qualification}</span>
+          </div>
+
+          <div>
+            <h6>담당 업무</h6>
+            <span>{albaData.responsibility}</span>
+          </div>
+
+          <div>
+            <h6>우대 사항</h6>
+            <span>{albaData.preference}</span>
+          </div>
+
+          <div>
+            <h6>마감일</h6>
+            <span>{albaData.deadline}</span>
+          </div>
+        </div>
       ) : (
         <div>
           <span>데이터가 없습니다.</span>
