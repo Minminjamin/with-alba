@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import { signOut } from "firebase/auth";
+import { signOut, getAuth } from "firebase/auth";
 import { auth } from "../../api/Firebase/FirebaseConfig";
 import { logout } from "../../store/modules/isLogin/isLoginAction";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [user, setUser] = useState<string>();
 
   const navigate = useNavigate();
 
@@ -31,7 +32,11 @@ const Header = () => {
 
   const onHandleClickMyPage = () => {
     if (isLoggedIn == true) {
-      navigate("/mypage");
+      const auth = getAuth();
+      const currentUser: any = auth.currentUser;
+
+      const userId: string = currentUser.uid;
+      navigate(`${userId}/mypage`);
     } else {
       alert("로그인 후에 이용이 가능합니다.");
       navigate("/login");
