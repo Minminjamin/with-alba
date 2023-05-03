@@ -18,15 +18,6 @@ const AlbaData = () => {
           setAlbaData(docSnap.data());
         }
       });
-      // console.log(userId);
-      // console.log(id);
-      // console.log(albaData);
-
-      // const docSnap = await getDoc(docRef);
-
-      // if (docSnap.exists()) {
-      //   setAlbaData(docSnap.data());
-      // }
     };
 
     getPostingData();
