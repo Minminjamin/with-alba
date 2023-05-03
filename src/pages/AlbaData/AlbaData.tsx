@@ -6,7 +6,9 @@ import { firestore } from "../../api/Firebase/FirebaseConfig";
 const AlbaData = () => {
   const { userId, id } = useParams<any>();
   const [albaData, setAlbaData] = useState<any>();
-
+  const [markerPosition, setMarkerPosition] = useState<[number, number] | null>(
+    null
+  );
   useEffect(() => {
     const getPostingData = async () => {
       const docRef = doc(firestore, `db/${userId}/posting/${id}`); //벡틱으로 오류를 제거
@@ -29,6 +31,31 @@ const AlbaData = () => {
 
     getPostingData();
   }, [firestore, userId, id]);
+
+  useEffect(() => {
+    const container = document.getElementById("map"); //지도 생성
+    let map: kakao.maps.Map | null = null; //오류를 막기 위해서 if 위에 선언
+    if (container !== null) {
+      map = new kakao.maps.Map(container, {
+        center: new kakao.maps.LatLng(37.54699, 126.94171),
+        level: 3,
+      }); // 초기화
+    }
+    const geocoder = new kakao.maps.services.Geocoder(); // 지도 검색 함수 생성
+    geocoder.addressSearch(albaData.address, (result, status) => {
+      //지도 검색
+      if (status === kakao.maps.services.Status.OK) {
+        const position = new kakao.maps.LatLng(
+          Number(result[0].y),
+          Number(result[0].x)
+        );
+        setMarkerPosition([Number(result[0].y), Number(result[0].x)]);
+        if (map !== null) {
+          map.setCenter(position);
+        }
+      }
+    });
+  }, []);
 
   return (
     <div>
