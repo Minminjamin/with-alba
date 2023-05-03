@@ -32,33 +32,35 @@ const AlbaData = () => {
     getPostingData();
   }, [firestore, userId, id]);
 
-  useEffect(() => {
-    const container = document.getElementById("map"); //지도 생성
-    let map: kakao.maps.Map | null = null; //오류를 막기 위해서 if 위에 선언
-    if (container !== null) {
-      map = new kakao.maps.Map(container, {
-        center: new kakao.maps.LatLng(37.54699, 126.94171),
-        level: 3,
-      }); // 초기화
-    }
-    const geocoder = new kakao.maps.services.Geocoder(); // 지도 검색 함수 생성
-    geocoder.addressSearch(albaData.address, (result, status) => {
-      //지도 검색
-      if (status === kakao.maps.services.Status.OK) {
-        const position = new kakao.maps.LatLng(
-          Number(result[0].y),
-          Number(result[0].x)
-        );
-        setMarkerPosition([Number(result[0].y), Number(result[0].x)]);
-        if (map !== null) {
-          map.setCenter(position);
-        }
+  setTimeout(() => {
+    if (albaData) {
+      const container = document.getElementById("map"); //지도 생성
+      let map: kakao.maps.Map | null = null; //오류를 막기 위해서 if 위에 선언
+      if (container !== null) {
+        map = new kakao.maps.Map(container, {
+          center: new kakao.maps.LatLng(37.54699, 126.94171),
+          level: 3,
+        }); // 초기화
       }
-    });
-  }, []);
+      const geocoder = new kakao.maps.services.Geocoder(); // 지도 검색 함수 생성
+      geocoder.addressSearch(albaData.address, (result, status) => {
+        //지도 검색
+        if (status === kakao.maps.services.Status.OK) {
+          const position = new kakao.maps.LatLng(
+            Number(result[0].y),
+            Number(result[0].x)
+          );
+          setMarkerPosition([Number(result[0].y), Number(result[0].x)]);
+          if (map !== null) {
+            map.setCenter(position);
+          }
+        }
+      });
+    }
+  }, 1000);
 
   return (
-    <div>
+    <div className="flex w-full justify-center">
       {albaData ? (
         <div>
           <img src={require("../../asset/img/basicImg.png")} />
