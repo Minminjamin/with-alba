@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
 
-// public\img\basicImg.jpg
 const AlbaData = () => {
   const { userId, id } = useParams<any>();
   const [albaData, setAlbaData] = useState<any>();
@@ -26,7 +25,6 @@ const AlbaData = () => {
       // if (docSnap.exists()) {
       //   setAlbaData(docSnap.data());
       // }
-      // await console.log(albaData);
     };
 
     getPostingData();
