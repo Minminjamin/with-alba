@@ -5,10 +5,12 @@ import { firestore } from "../../api/Firebase/FirebaseConfig";
 
 const AlbaData = () => {
   const { userId, id } = useParams<any>();
+
   const [albaData, setAlbaData] = useState<any>();
   const [markerPosition, setMarkerPosition] = useState<[number, number] | null>(
     null
   );
+
   useEffect(() => {
     const getPostingData = async () => {
       const docRef = doc(firestore, `db/${userId}/posting/${id}`); //벡틱으로 오류를 제거
