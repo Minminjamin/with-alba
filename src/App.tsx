@@ -21,7 +21,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/login/join" element={<Join />} />
             <Route path=":userId/mypage" element={<MyPage />} />
-            <Route path=":userId/mypage:/:id" element={<MyPosting />} />
+            <Route path=":userId/mypage/:title" element={<MyPosting />} />
             <Route path="/editor" element={<Editor />} />
           </Routes>
         </div>
