@@ -1,10 +1,12 @@
 import { collection, getDocs } from "@firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
 
 const MyPage = () => {
   const { userId } = useParams();
+  const navigator = useNavigate();
+
   const [myData, setMyData] = useState<any | string>();
 
   useEffect(() => {
@@ -20,17 +22,23 @@ const MyPage = () => {
 
     getMyPostings();
   }, []);
+
+  const onHandleClick = (title: string) => {
+    navigator(`${title}`);
+  };
+
   return (
     <div>
-      <h6 className="mt-20 border-2 w-1/6 text-center border-violet-100 text-indigo-400">
+      <span className="mt-20 border-2 w-1/6 text-center border-violet-100 text-indigo-400">
         내가 쓴 공고 보기
-      </h6>
+      </span>
 
       <div className="mt-28 grid grid-rows-3">
         {myData ? (
           myData.map((posting: any) => (
             <div
               key={posting.title}
+              onClick={(e) => onHandleClick(posting.title)}
               className="rounded-lg border-2 w-1/5 flex flex-col items-start h-52 content-between justify-around shadow-lg cursor-pointer"
             >
               <h3 className="font-bold text-xl text-center w-full justify-items-center">
