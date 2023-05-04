@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
-import { doc, getDoc } from "@firebase/firestore";
+import { deleteDoc, doc, getDoc } from "@firebase/firestore";
+import { async } from "@firebase/util";
 
 const MyPosting = () => {
   const { userId, title } = useParams<any>();
@@ -54,6 +55,12 @@ const MyPosting = () => {
     }
   }, [myAlbaData, markerPosition]);
 
+  const isDelete = async () => {
+    const docRef = doc(firestore, `db/${userId}/posting/${title}`);
+    await deleteDoc(docRef);
+
+    navigate("/");
+  };
   return (
     <div>
       {myAlbaData ? (
