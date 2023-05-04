@@ -16,7 +16,7 @@ function App() {
         <Header />
         <div className="">
           <Routes>
-            <Route path={`:userId/posting/:id`} element={<AlbaData />} />
+            <Route path=":userId/posting/:id" element={<AlbaData />} />
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/login/join" element={<Join />} />
