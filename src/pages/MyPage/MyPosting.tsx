@@ -113,7 +113,7 @@ const MyPosting = () => {
           </div>
 
           <div className="w-full flex justify-center">
-            <button>삭제하기</button>
+            <button onClick={isDelete}>삭제하기</button>
             {/* <button
               className="bg-sky-500 rounded-md text-white hover:bg-sky-800 w-2/5"
               onClick={onHandleButton}
