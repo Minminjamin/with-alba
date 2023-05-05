@@ -1,6 +1,6 @@
 import React from "react";
 
-const Nodata = () => {
+const NoData = () => {
   return (
     <div className="flex justify-center flex-col text-center space-y-5 mt-36">
       <span className="w-full">데이터가 없습니다.</span>
@@ -12,4 +12,4 @@ const Nodata = () => {
   );
 };
 
-export default Nodata;
+export default NoData;
