@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { firestore } from "../api/Firebase/FirebaseConfig";
 import { doc, getDoc } from "@firebase/firestore";
 
-const useDetailData = (user: string, title: string) => {
+const useDetailData = (user: string | undefined, title: string | undefined) => {
   const [data, setData] = useState<string | any>();
 
   useEffect(() => {
