@@ -4,7 +4,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useInput } from "../../hooks/useInput";
+import useInput from "../../hooks/useInput";
 
 declare global {
   interface Window {
@@ -13,7 +13,7 @@ declare global {
 }
 
 const Editor = () => {
-  const { inputValue, onHandleChange } = useInput();
+  const { text, onChange } = useInput();
 
   const isLoggedIn = useSelector((state: any) => state.isLogin.isLoginned);
 
@@ -34,24 +34,18 @@ const Editor = () => {
       //사용자가 로그인했나 확인
       setUser(currentUser.uid);
       const user: string = currentUser.uid;
-      const docRef = doc(
-        firestore,
-        "db",
-        user,
-        "posting",
-        `${inputValue.title}`
-      );
+      const docRef = doc(firestore, "db", user, "posting", `${text.title}`);
       // Firebase 데이터베이스에 저장할 객체 생성
       const data = {
-        title: inputValue.title,
-        image: inputValue.image || "",
-        age: inputValue.age,
-        qualification: inputValue.qualification,
-        responsibility: inputValue.responsibility,
-        preference: inputValue.preference,
-        deadline: inputValue.deadline,
-        address: inputValue.address,
-        detailAddress: inputValue.detailAddress,
+        title: text.title,
+        image: text.image || "",
+        age: text.age,
+        qualification: text.qualification,
+        responsibility: text.responsibility,
+        preference: text.preference,
+        deadline: text.deadline,
+        address: text.address,
+        detailAddress: text.detailAddress,
         userId: user,
       };
 
@@ -77,7 +71,7 @@ const Editor = () => {
       }); // 초기화
     }
     const geocoder = new kakao.maps.services.Geocoder(); // 지도 검색 함수 생성
-    geocoder.addressSearch(inputValue.address, (result, status) => {
+    geocoder.addressSearch(text.address, (result, status) => {
       //지도 검색
       if (status === kakao.maps.services.Status.OK) {
         const position = new kakao.maps.LatLng(
@@ -112,7 +106,7 @@ const Editor = () => {
             type="file"
             accept="image/*"
             name="image"
-            onChange={onHandleChange}
+            onChange={onChange}
             className="w-full"
           />
         </div>
@@ -122,7 +116,7 @@ const Editor = () => {
           <input
             placeholder="제목을 입력해주세요."
             name="title"
-            onChange={onHandleChange}
+            onChange={onChange}
             className="border-solid border-2 border-gray-300 rounded-md w-full"
           />
         </div>
@@ -132,7 +126,7 @@ const Editor = () => {
           <input
             placeholder="모집 연령층을 입력해주세요"
             name="age"
-            onChange={onHandleChange}
+            onChange={onChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -142,7 +136,7 @@ const Editor = () => {
           <textarea
             placeholder="자격 요건을 입력해주세요"
             name="qualification"
-            onChange={onHandleChange}
+            onChange={onChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -152,7 +146,7 @@ const Editor = () => {
           <textarea
             placeholder="담당 업무를 입력해주세요"
             name="responsibility"
-            onChange={onHandleChange}
+            onChange={onChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -162,7 +156,7 @@ const Editor = () => {
           <textarea
             placeholder="우대 사항 입력해주세요"
             name="preference"
-            onChange={onHandleChange}
+            onChange={onChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -172,7 +166,7 @@ const Editor = () => {
           <input
             placeholder="모집 마감일을 입력해주세요."
             name="deadline"
-            onChange={onHandleChange}
+            onChange={onChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -184,7 +178,7 @@ const Editor = () => {
               <input
                 placeholder="주소를 입력해주세요."
                 name="address"
-                onChange={onHandleChange}
+                onChange={onChange}
                 className="border-solid border-2 border-gray-300 rounded-md w-3/4 "
               />
               <button
@@ -200,7 +194,7 @@ const Editor = () => {
           <input
             placeholder="상세 주소를 입력해주세요."
             name="detailAddress"
-            onChange={onHandleChange}
+            onChange={onChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
 
