@@ -5,7 +5,7 @@ import { auth } from "../../api/Firebase/FirebaseConfig";
 import useInput from "../../hooks/useInput";
 
 const Join = () => {
-  const { text, onChange } = useInput();
+  const { text, onHandleChange } = useInput();
 
   const navigatge = useNavigate();
 
@@ -67,7 +67,7 @@ const Join = () => {
           <input
             placeholder="이름을 입력해주세요."
             name="name"
-            onChange={onChange}
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -77,7 +77,7 @@ const Join = () => {
           <input
             placeholder="아이디를 입력해주세요."
             name="id"
-            onChange={onChange}
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -87,7 +87,7 @@ const Join = () => {
           <input
             placeholder="비밀번호를 입력해주세요."
             name="password"
-            onChange={onChange}
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -97,7 +97,7 @@ const Join = () => {
           <input
             placeholder="비밀번호를 다시 한 번 입력해주세요."
             name="confirmPassword"
-            onChange={onChange}
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>

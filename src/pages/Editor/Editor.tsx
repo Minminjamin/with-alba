@@ -13,7 +13,7 @@ declare global {
 }
 
 const Editor = () => {
-  const { text, onChange } = useInput();
+  const { text, onHandleChange } = useInput();
 
   const isLoggedIn = useSelector((state: any) => state.isLogin.isLoginned);
 
@@ -106,7 +106,7 @@ const Editor = () => {
             type="file"
             accept="image/*"
             name="image"
-            onChange={onChange}
+            onChange={onHandleChange}
             className="w-full"
           />
         </div>
@@ -116,7 +116,7 @@ const Editor = () => {
           <input
             placeholder="제목을 입력해주세요."
             name="title"
-            onChange={onChange}
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md w-full"
           />
         </div>
@@ -126,7 +126,7 @@ const Editor = () => {
           <input
             placeholder="모집 연령층을 입력해주세요"
             name="age"
-            onChange={onChange}
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -136,7 +136,7 @@ const Editor = () => {
           <textarea
             placeholder="자격 요건을 입력해주세요"
             name="qualification"
-            onChange={onChange}
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -146,7 +146,7 @@ const Editor = () => {
           <textarea
             placeholder="담당 업무를 입력해주세요"
             name="responsibility"
-            onChange={onChange}
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -156,7 +156,7 @@ const Editor = () => {
           <textarea
             placeholder="우대 사항 입력해주세요"
             name="preference"
-            onChange={onChange}
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -166,7 +166,7 @@ const Editor = () => {
           <input
             placeholder="모집 마감일을 입력해주세요."
             name="deadline"
-            onChange={onChange}
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -178,7 +178,7 @@ const Editor = () => {
               <input
                 placeholder="주소를 입력해주세요."
                 name="address"
-                onChange={onChange}
+                onChange={onHandleChange}
                 className="border-solid border-2 border-gray-300 rounded-md w-3/4 "
               />
               <button
@@ -194,7 +194,7 @@ const Editor = () => {
           <input
             placeholder="상세 주소를 입력해주세요."
             name="detailAddress"
-            onChange={onChange}
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
 

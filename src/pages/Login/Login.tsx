@@ -7,7 +7,7 @@ import { login } from "../../store/modules/isLogin/isLoginAction";
 import useInput from "../../hooks/useInput";
 
 const Login = () => {
-  const { text, onChange } = useInput();
+  const { text, onHandleChange } = useInput();
 
   const navigate = useNavigate();
 
@@ -21,6 +21,7 @@ const Login = () => {
   const onHandleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    console.log(text.id);
     if (text.id == "") {
       alert("아이디를 입력해주세요");
       return;
@@ -62,7 +63,7 @@ const Login = () => {
           <input
             placeholder="아이디를 입력해주세요."
             name="id"
-            onChange={onChange}
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -72,7 +73,7 @@ const Login = () => {
           <input
             placeholder="비밀번호를 입력해주세요."
             name="password"
-            onChange={onChange}
+            onChange={onHandleChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>

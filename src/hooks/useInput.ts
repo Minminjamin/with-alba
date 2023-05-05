@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 
 const useInput = () => {
-  const [text, setText] = useState<any | null | string | null | number>();
-  const onChange = (event: any) => {
-    const {
-      target: { value: text },
-    } = event;
-    setText(text);
+  const [text, setText] = useState<any | string | number | null>();
+
+  const onHandleChange = (e: any) => {
+    const { name, value } = e.target;
+    setText({ ...text, [name]: value });
   };
-  return { text, onChange };
+  return { text, onHandleChange };
 };
 
 export default useInput;
