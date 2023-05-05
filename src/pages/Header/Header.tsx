@@ -7,7 +7,6 @@ import { logout } from "../../store/modules/isLogin/isLoginAction";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [user, setUser] = useState<string>();
 
   const navigate = useNavigate();
 
