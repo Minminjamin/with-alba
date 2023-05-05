@@ -2,9 +2,10 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../api/Firebase/FirebaseConfig";
-import { useInput } from "../../hooks/useInput";
+import useInput from "../../hooks/useInput";
+
 const Join = () => {
-  const { inputValue, onHandleChange } = useInput();
+  const { text, onChange } = useInput();
 
   const navigatge = useNavigate();
 
@@ -15,23 +16,23 @@ const Join = () => {
     const idRegex = /^[a-zA-Z0-9]{6,12}$/;
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$/;
 
-    if (!nameRegex.test(inputValue.name)) {
+    if (!nameRegex.test(text.name)) {
       alert("이름은 영어와 한글만 포함해야 합니다.");
       return;
     }
-    if (!idRegex.test(inputValue.id)) {
+    if (!idRegex.test(text.id)) {
       alert(
         "아이디는 영어와 숫자를 포함해 6자 이상 12자 이하로 입력해야 합니다."
       );
       return;
     }
-    if (!passwordRegex.test(inputValue.password)) {
+    if (!passwordRegex.test(text.password)) {
       alert(
         "비밀번호는 영어와 숫자를 포함해 6자 이상 12자 이하로 입력해야 합니다."
       );
       return;
     }
-    if (inputValue.confirmPassword !== inputValue.password) {
+    if (text.confirmPassword !== text.password) {
       alert("입력한 비밀번호가 일치하지 않습니다.");
       return;
     }
@@ -39,11 +40,11 @@ const Join = () => {
     try {
       const { user } = await createUserWithEmailAndPassword(
         auth,
-        `${inputValue.id}@withalba.com`,
-        inputValue.password
+        `${text.id}@withalba.com`,
+        text.password
       );
 
-      await updateProfile(user, { displayName: inputValue.name });
+      await updateProfile(user, { displayName: text.name });
       alert("회원가입에 성공하셨습니다");
       navigatge(-1);
     } catch (error) {
@@ -66,7 +67,7 @@ const Join = () => {
           <input
             placeholder="이름을 입력해주세요."
             name="name"
-            onChange={onHandleChange}
+            onChange={onChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -76,7 +77,7 @@ const Join = () => {
           <input
             placeholder="아이디를 입력해주세요."
             name="id"
-            onChange={onHandleChange}
+            onChange={onChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -86,7 +87,7 @@ const Join = () => {
           <input
             placeholder="비밀번호를 입력해주세요."
             name="password"
-            onChange={onHandleChange}
+            onChange={onChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
@@ -96,7 +97,7 @@ const Join = () => {
           <input
             placeholder="비밀번호를 다시 한 번 입력해주세요."
             name="confirmPassword"
-            onChange={onHandleChange}
+            onChange={onChange}
             className="border-solid border-2 border-gray-300 rounded-md "
           />
         </div>
