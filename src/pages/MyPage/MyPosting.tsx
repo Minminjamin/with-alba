@@ -2,33 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
 import { deleteDoc, doc, getDoc } from "@firebase/firestore";
+import useDetailData from "../../hooks/useDetailData";
 
 const MyPosting = () => {
   const { userId, title } = useParams<any>();
   const navigate = useNavigate();
 
-  const [myAlbaData, setMyAlbaData] = useState<any>();
   const [markerPosition, setMarkerPosition] = useState<[number, number] | null>(
     null
   );
 
-  useEffect(() => {
-    const getPostingData = async () => {
-      const docRef = doc(firestore, `db/${userId}/posting/${title}`);
-
-      getDoc(docRef).then((docSnap) => {
-        if (docSnap.exists()) {
-          setMyAlbaData(docSnap.data());
-        }
-      });
-      // await console.log(myAlbaData);
-    };
-
-    getPostingData();
-  }, []);
+  const [data] = useDetailData(userId, title);
 
   useEffect(() => {
-    if (myAlbaData && markerPosition === null) {
+    if (data && markerPosition === null) {
       const container = document.getElementById("map"); //지도 생성
       let map: kakao.maps.Map | null = null; //오류를 막기 위해서 if 위에 선언
       if (container !== null) {
@@ -38,7 +25,7 @@ const MyPosting = () => {
         }); // 초기화
       }
       const geocoder = new kakao.maps.services.Geocoder(); // 지도 검색 함수 생성
-      geocoder.addressSearch(myAlbaData.address, (result, status) => {
+      geocoder.addressSearch(data.address, (result, status) => {
         //지도 검색
         if (status === kakao.maps.services.Status.OK) {
           const position = new kakao.maps.LatLng(
@@ -52,7 +39,7 @@ const MyPosting = () => {
         }
       });
     }
-  }, [myAlbaData, markerPosition]);
+  }, [data, markerPosition]);
 
   const isDelete = async () => {
     const docRef = doc(firestore, `db/${userId}/posting/${title}`);
@@ -62,7 +49,7 @@ const MyPosting = () => {
   };
   return (
     <div>
-      {myAlbaData ? (
+      {data ? (
         <div className="px-10 py-20 space-y-8">
           <img
             src={require("../../asset/img/basicImg.png")}
@@ -71,32 +58,32 @@ const MyPosting = () => {
 
           <div className="w-full">
             <h6 className="text-lg font-bold">제목</h6>
-            <span className="mt-3 block">{myAlbaData.title}</span>
+            <span className="mt-3 block">{data.title}</span>
           </div>
 
           <div className="w-full">
             <h6 className="text-lg font-bold">모집 연령층</h6>
-            <span className="mt-3 block">{myAlbaData.age}</span>
+            <span className="mt-3 block">{data.age}</span>
           </div>
 
           <div className="w-full">
             <h6 className="text-lg font-bold">자격 요건</h6>
-            <span className="mt-3 block">{myAlbaData.qualification}</span>
+            <span className="mt-3 block">{data.qualification}</span>
           </div>
 
           <div className="w-full">
             <h6 className="text-lg font-bold">담당 업무</h6>
-            <span className="mt-3 block">{myAlbaData.responsibility}</span>
+            <span className="mt-3 block">{data.responsibility}</span>
           </div>
 
           <div className="w-full">
             <h6 className="text-lg font-bold">우대 사항</h6>
-            <span className="mt-3 block">{myAlbaData.preference}</span>
+            <span className="mt-3 block">{data.preference}</span>
           </div>
 
           <div className="w-full">
             <h6 className="text-lg font-bold">마감일</h6>
-            <span className="mt-3 block">{myAlbaData.deadline}</span>
+            <span className="mt-3 block">{data.deadline}</span>
           </div>
 
           <div className="w-full">
@@ -107,7 +94,7 @@ const MyPosting = () => {
               className="mt-3 w-full"
             />
             <span className="mt-3 block">
-              {myAlbaData.address} {myAlbaData.detailAddress}
+              {data.address} {data.detailAddress}
             </span>
           </div>
 
