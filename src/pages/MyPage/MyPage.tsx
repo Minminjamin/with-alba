@@ -2,6 +2,7 @@ import { collection, getDocs } from "@firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
+import NoData from "../NoData";
 
 const MyPage = () => {
   const { userId } = useParams();
@@ -50,9 +51,7 @@ const MyPage = () => {
             </div>
           ))
         ) : (
-          <div>
-            <span>데이터가 없습니다</span>
-          </div>
+          <NoData />
         )}
       </div>
     </div>
