@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
 import { deleteDoc, doc, getDoc } from "@firebase/firestore";
-import { async } from "@firebase/util";
 
 const MyPosting = () => {
   const { userId, title } = useParams<any>();
