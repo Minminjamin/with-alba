@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
+import useDetailData from "../../hooks/useDetailData";
 import NoData from "../NoData";
 
 const AlbaData = () => {
-  const { userId, id } = useParams<any>();
+  const { userId, id } = useParams<string>();
   const navigate = useNavigate();
   const [albaData, setAlbaData] = useState<any>();
   const [markerPosition, setMarkerPosition] = useState<[number, number] | null>(
@@ -15,19 +16,8 @@ const AlbaData = () => {
   const [isChecked, setIsChecked] = useState<boolean>(false); //useInput 훅 사용이 가능한가?
 
   const isLoggedIn = useSelector((state: any) => state.isLogin.isLoginned);
-  useEffect(() => {
-    const getPostingData = async () => {
-      const docRef = doc(firestore, `db/${userId}/posting/${id}`); //벡틱으로 오류를 제거
 
-      getDoc(docRef).then((docSnap) => {
-        if (docSnap.exists()) {
-          setAlbaData(docSnap.data());
-        }
-      });
-    };
-
-    getPostingData();
-  }, [firestore, userId, id]);
+  const [data] = useDetailData(userId, id);
 
   useEffect(() => {
     if (albaData && markerPosition === null) {
@@ -40,7 +30,7 @@ const AlbaData = () => {
         }); // 초기화
       }
       const geocoder = new kakao.maps.services.Geocoder(); // 지도 검색 함수 생성
-      geocoder.addressSearch(albaData.address, (result, status) => {
+      geocoder.addressSearch(data.address, (result, status) => {
         //지도 검색
         if (status === kakao.maps.services.Status.OK) {
           const position = new kakao.maps.LatLng(
@@ -73,7 +63,7 @@ const AlbaData = () => {
 
   return (
     <div className="flex justify-center ">
-      {albaData ? (
+      {data ? (
         <div className="px-10 py-20 space-y-8">
           <img
             src={require("../../asset/img/basicImg.png")}
@@ -82,32 +72,32 @@ const AlbaData = () => {
 
           <div className="w-full">
             <h6 className="text-lg font-bold">제목</h6>
-            <span className="mt-3 block">{albaData.title}</span>
+            <span className="mt-3 block">{data.title}</span>
           </div>
 
           <div className="w-full">
             <h6 className="text-lg font-bold">모집 연령층</h6>
-            <span className="mt-3 block">{albaData.age}</span>
+            <span className="mt-3 block">{data.age}</span>
           </div>
 
           <div className="w-full">
             <h6 className="text-lg font-bold">자격 요건</h6>
-            <span className="mt-3 block">{albaData.qualification}</span>
+            <span className="mt-3 block">{data.qualification}</span>
           </div>
 
           <div className="w-full">
             <h6 className="text-lg font-bold">담당 업무</h6>
-            <span className="mt-3 block">{albaData.responsibility}</span>
+            <span className="mt-3 block">{data.responsibility}</span>
           </div>
 
           <div className="w-full">
             <h6 className="text-lg font-bold">우대 사항</h6>
-            <span className="mt-3 block">{albaData.preference}</span>
+            <span className="mt-3 block">{data.preference}</span>
           </div>
 
           <div className="w-full">
             <h6 className="text-lg font-bold">마감일</h6>
-            <span className="mt-3 block">{albaData.deadline}</span>
+            <span className="mt-3 block">{data.deadline}</span>
           </div>
 
           <div className="w-full">
@@ -118,7 +108,7 @@ const AlbaData = () => {
               className="mt-3 w-full"
             />
             <span className="mt-3 block">
-              {albaData.address} {albaData.detailAddress}
+              {data.address} {data.detailAddress}
             </span>
           </div>
 
