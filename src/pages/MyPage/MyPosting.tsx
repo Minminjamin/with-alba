@@ -3,43 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
 import { deleteDoc, doc, getDoc } from "@firebase/firestore";
 import useDetailData from "../../hooks/useDetailData";
+import SearchMap from "../SearchMap";
 
 const MyPosting = () => {
   const { userId, title } = useParams<any>();
   const navigate = useNavigate();
 
-  const [markerPosition, setMarkerPosition] = useState<[number, number] | null>(
-    null
-  );
-
   const [data] = useDetailData(userId, title);
-
-  useEffect(() => {
-    if (data && markerPosition === null) {
-      const container = document.getElementById("map"); //지도 생성
-      let map: kakao.maps.Map | null = null; //오류를 막기 위해서 if 위에 선언
-      if (container !== null) {
-        map = new kakao.maps.Map(container, {
-          center: new kakao.maps.LatLng(37.54699, 126.94171),
-          level: 3,
-        }); // 초기화
-      }
-      const geocoder = new kakao.maps.services.Geocoder(); // 지도 검색 함수 생성
-      geocoder.addressSearch(data.address, (result, status) => {
-        //지도 검색
-        if (status === kakao.maps.services.Status.OK) {
-          const position = new kakao.maps.LatLng(
-            Number(result[0].y),
-            Number(result[0].x)
-          );
-          setMarkerPosition([Number(result[0].y), Number(result[0].x)]);
-          if (map !== null) {
-            map.setCenter(position);
-          }
-        }
-      });
-    }
-  }, [data, markerPosition]);
 
   const isDelete = async () => {
     const docRef = doc(firestore, `db/${userId}/posting/${title}`);
@@ -88,11 +58,7 @@ const MyPosting = () => {
 
           <div className="w-full">
             <h6 className="text-lg font-bold">위치</h6>
-            <div
-              id="map"
-              style={{ width: "400px", height: "250px" }}
-              className="mt-3 w-full"
-            />
+            <SearchMap data={data} address={data.srting} />
             <span className="mt-3 block">
               {data.address} {data.detailAddress}
             </span>
