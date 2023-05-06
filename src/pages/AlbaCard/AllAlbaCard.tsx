@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
 
-const AlbaCard = () => {
+const AllAlbaCard = () => {
   const [postingData, setPostingData] = useState<any>([]);
   const navigator = useNavigate();
 
@@ -50,4 +50,4 @@ const AlbaCard = () => {
   );
 };
 
-export default AlbaCard;
+export default AllAlbaCard;
