@@ -1,7 +1,7 @@
 import React from "react";
-import AlbaCard from "../AlbaCard/AlbaCard";
-import HomeText from "../HomeText";
-import RouteEditor from "../RouteEditor";
+import AlbaCard from "../pages/AlbaCard/AlbaCard";
+import HomeText from "../pages/HomeText";
+import RouteEditor from "../pages/RouteEditor";
 
 const Home = () => {
   return (
