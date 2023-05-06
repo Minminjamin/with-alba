@@ -6,8 +6,8 @@ import Join from "./pages/Login/Join";
 import Login from "./pages/Login/Login";
 import MyPage from "./pages/MyPage/MyPage";
 import Editor from "./pages/Editor/Editor";
-import ShowAlbaData from "./pages/AlbaData/ShowAlbaData";
-import MyPosting from "./pages/MyPage/MyPosting";
+import ShowAlbaData from "./components/ShowAlbaData";
+import MyPosting from "./components/MyPosting";
 
 function App() {
   return (

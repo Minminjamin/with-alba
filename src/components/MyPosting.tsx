@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { firestore } from "../../api/Firebase/FirebaseConfig";
+import { firestore } from "../api/Firebase/FirebaseConfig";
 import { deleteDoc, doc } from "@firebase/firestore";
-import useDetailData from "../../hooks/useDetailData";
-import AlbaData from "../AlbaData";
-import NoData from "../NoData";
+import useDetailData from "../hooks/useDetailData";
+import AlbaData from "../pages/AlbaData";
+import NoData from "../pages/NoData";
 
 const MyPosting = () => {
   const { userId, title } = useParams<any>();
