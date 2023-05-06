@@ -5,6 +5,7 @@ import { firestore } from "../../api/Firebase/FirebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useInput from "../../hooks/useInput";
+import SearchMap from "../SearchMap";
 
 declare global {
   interface Window {
@@ -198,6 +199,7 @@ const Editor = () => {
             className="border-solid border-2 border-gray-300 rounded-md "
           />
 
+          {/* <SearchMap data={text} address={text.address || "집"} /> */}
           <div id="map" style={{ width: "400px", height: "250px" }} />
         </div>
 
