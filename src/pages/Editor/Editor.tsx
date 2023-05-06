@@ -5,7 +5,6 @@ import { firestore } from "../../api/Firebase/FirebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useInput from "../../hooks/useInput";
-import SearchMap from "../SearchMap";
 
 declare global {
   interface Window {

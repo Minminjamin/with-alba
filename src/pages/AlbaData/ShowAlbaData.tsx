@@ -1,8 +1,6 @@
-import { doc, getDoc } from "@firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { firestore } from "../../api/Firebase/FirebaseConfig";
 import useDetailData from "../../hooks/useDetailData";
 import AlbaData from "../AlbaData";
 import NoData from "../NoData";
