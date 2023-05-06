@@ -1,5 +1,5 @@
 import React from "react";
-import AllAlbaCard from "../pages/AlbaCard/AllAlbaCard";
+import AllAlbaCard from "../pages/AllAlbaCard";
 import HomeText from "../pages/HomeText";
 import RouteEditor from "../pages/RouteEditor";
 

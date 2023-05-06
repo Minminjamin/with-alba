@@ -1,7 +1,7 @@
 import { collectionGroup, getDocs } from "@firebase/firestore";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { firestore } from "../../api/Firebase/FirebaseConfig";
+import { firestore } from "../api/Firebase/FirebaseConfig";
 
 const AllAlbaCard = () => {
   const [postingData, setPostingData] = useState<any>([]);
