@@ -1,7 +1,8 @@
 import React from "react";
 import SearchMap from "./SearchMap";
 
-const AlbaData = (data: any) => {
+const AlbaData = ({ data }: any) => {
+  //간접적으로 접근하도록 수정
   return (
     <div className="px-10 py-20 space-y-8">
       <img src={require("../../src/asset/img/basicImg.png")} />
