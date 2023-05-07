@@ -21,13 +21,7 @@ const AllAlbaCard = () => {
     getPostings();
   }, []);
 
-  const HandleClickPosting = (
-    e: React.MouseEvent<HTMLDivElement>,
-    title: string,
-    userId: string
-  ) => {
-    e.preventDefault();
-
+  const HandleClickPosting = (title: string, userId: string) => {
     navigator(`${userId}/posting/${title.trim()}`);
   };
 
