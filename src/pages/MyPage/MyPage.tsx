@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
 import NoData from "../NoData";
+import PostingCard from "../PostingCard";
 
 const MyPage = () => {
   const { userId } = useParams();
@@ -36,20 +37,7 @@ const MyPage = () => {
 
       <div className="mt-28 grid grid-rows-3">
         {myData ? (
-          myData.map((posting: any) => (
-            <div
-              key={posting.title}
-              onClick={(e) => onHandleClick(posting.title)}
-              className="rounded-lg border-2 w-1/5 flex flex-col items-start h-52 content-between justify-around shadow-lg cursor-pointer"
-            >
-              <h3 className="font-bold text-xl text-center w-full justify-items-center">
-                {posting.title}
-              </h3>
-              <span className="ml-4">{posting.deadline}</span>
-              <span className="ml-4">나이 : {posting.age}</span>
-              <span className="ml-4">{posting.address}</span>
-            </div>
-          ))
+          <PostingCard postingData={myData} clickEvent={onHandleClick} />
         ) : (
           <NoData />
         )}

@@ -2,6 +2,7 @@ import { collectionGroup, getDocs } from "@firebase/firestore";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { firestore } from "../api/Firebase/FirebaseConfig";
+import PostingCard from "./PostingCard";
 
 const AllAlbaCard = () => {
   const [postingData, setPostingData] = useState<any>([]);
@@ -32,7 +33,8 @@ const AllAlbaCard = () => {
 
   return (
     <div className="flex grid-rows-3 justify-around">
-      {postingData.map((posting: any) => (
+      <PostingCard postingData={postingData} clickEvent={HandleClickPosting} />
+      {/* {postingData.map((posting: any) => (
         <div
           key={posting.title}
           onClick={(e) => HandleClickPosting(e, posting.title, posting.userId)}
@@ -45,7 +47,7 @@ const AllAlbaCard = () => {
           <span className="ml-4">나이 : {posting.age}</span>
           <span className="ml-4">{posting.address}</span>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };
