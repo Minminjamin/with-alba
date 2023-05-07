@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Join from "./pages/Login/Join";
 import Login from "./pages/Login/Login";
-import MyPage from "./pages/MyPage/MyPage";
+import MyPage from "./components/MyPage";
 import Editor from "./pages/Editor/Editor";
 import ShowAlbaData from "./components/ShowAlbaData";
 import MyPosting from "./components/MyPosting";

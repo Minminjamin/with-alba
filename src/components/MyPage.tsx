@@ -1,9 +1,9 @@
 import { collection, getDocs } from "@firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { firestore } from "../../api/Firebase/FirebaseConfig";
-import NoData from "../NoData";
-import PostingCard from "../PostingCard";
+import { firestore } from "../api/Firebase/FirebaseConfig";
+import NoData from "../pages/NoData";
+import PostingCard from "../pages/PostingCard";
 
 const MyPage = () => {
   const { userId } = useParams();
