@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import useInput from "../../hooks/useInput";
 import FormInput from "../FormInput";
 import SearchMap from "../SearchMap";
+import FormTextArea from "../FormTextArea";
 
 declare global {
   interface Window {
@@ -112,7 +113,6 @@ const Editor = () => {
             className="w-full"
           />
         </div>
-
         <FormInput
           labelText="제목"
           placeholder="제목을 입력해주세요."
@@ -125,75 +125,53 @@ const Editor = () => {
           name="age"
           onHandleChange={onHandleChange}
         />
+        <FormTextArea
+          labelText="자격 요건"
+          placeholder="자격 요건을 입력해주세요."
+          name="qualification"
+          onHandleChange={onHandleChange}
+        />
+        <FormTextArea
+          labelText="담당 업무"
+          placeholder="담당 업무를 입력해주세요."
+          name="responsibility"
+          onHandleChange={onHandleChange}
+        />
+        <FormTextArea
+          labelText="우대 사항"
+          placeholder="우대 사항 입력해주세요."
+          name="preference"
+          onHandleChange={onHandleChange}
+        />
+        <FormInput
+          labelText="모집 마감일"
+          placeholder="모집 마감일을 입력해주세요."
+          name="deadline"
+          onHandleChange={onHandleChange}
+        />
 
-        <div className="flex flex-col space-y-2">
-          <label>자격 요건</label>
-          <textarea
-            placeholder="자격 요건을 입력해주세요"
-            name="qualification"
-            onChange={onHandleChange}
-            className="border-solid border-2 border-gray-300 rounded-md "
-          />
-        </div>
-
-        <div className="flex flex-col space-y-2">
-          <label>담당 업무</label>
-          <textarea
-            placeholder="담당 업무를 입력해주세요"
-            name="responsibility"
-            onChange={onHandleChange}
-            className="border-solid border-2 border-gray-300 rounded-md "
-          />
-        </div>
-
-        <div className="flex flex-col space-y-2">
-          <label>우대 사항</label>
-          <textarea
-            placeholder="우대 사항 입력해주세요"
-            name="preference"
-            onChange={onHandleChange}
-            className="border-solid border-2 border-gray-300 rounded-md "
-          />
-        </div>
-
-        <div className="flex flex-col space-y-2">
-          <label>모집 마감일</label>
-          <input
-            placeholder="모집 마감일을 입력해주세요."
-            name="deadline"
-            onChange={onHandleChange}
-            className="border-solid border-2 border-gray-300 rounded-md "
-          />
-        </div>
-
-        <div className="flex flex-col space-y-4">
-          <div className="flex flex-col space-y-2">
-            <label>주소</label>
-            <div className="flex justify-between">
-              <input
-                placeholder="주소를 입력해주세요."
-                name="address"
-                onChange={onHandleChange}
-                className="border-solid border-2 border-gray-300 rounded-md w-3/4 "
-              />
-              <button
-                onClick={onHandleSearchLocation}
-                className="w-1/5 rounded-md bg-slate-200 border-solid border-2 border-slate-300"
-              >
-                검색
-              </button>
-            </div>
-          </div>
-
+        <div className="flex">
           <FormInput
-            labelText="상세 주소"
-            placeholder="상세 주소를 입력해주세요"
-            name="detailAddress"
+            labelText="주소"
+            placeholder="주소를 입력해주세요."
+            name="address"
             onHandleChange={onHandleChange}
           />
-
-          <div id="map" style={{ width: "400px", height: "250px" }} />
+          <button
+            onClick={onHandleSearchLocation}
+            className="w-1/5 rounded-md bg-slate-200 border-solid border-2 border-slate-300"
+          >
+            검색
+          </button>
         </div>
+
+        <FormInput
+          labelText="상세 주소"
+          placeholder="상세 주소를 입력해주세요"
+          name="detailAddress"
+          onHandleChange={onHandleChange}
+        />
+        <div id="map" style={{ width: "400px", height: "250px" }} />
 
         <div className="w-full flex justify-center">
           <button
