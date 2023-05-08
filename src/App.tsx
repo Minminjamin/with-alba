@@ -5,7 +5,7 @@ import Home from "./components/Home";
 import Join from "./components/Join";
 import Login from "./components/Login";
 import MyPage from "./components/MyPage";
-import Editor from "./pages/Editor/Editor";
+import Editor from "./components/Editor";
 import ShowAlbaData from "./components/ShowAlbaData";
 import MyPosting from "./components/MyPosting";
 
