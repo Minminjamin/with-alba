@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../api/Firebase/FirebaseConfig";
 import useInput from "../../hooks/useInput";
+import FormInput from "../FormInput";
 
 const Join = () => {
   const { text, onHandleChange } = useInput();
@@ -62,46 +63,30 @@ const Join = () => {
           <h3 className=" text-xl font-bold">회원가입</h3>
         </div>
 
-        <div className="flex flex-col space-y-1">
-          <label>이름*</label>
-          <input
-            placeholder="이름을 입력해주세요."
-            name="name"
-            onChange={onHandleChange}
-            className="border-solid border-2 border-gray-300 rounded-md "
-          />
-        </div>
-
-        <div className="flex flex-col space-y-1">
-          <label>아이디(ID)*</label>
-          <input
-            placeholder="아이디를 입력해주세요."
-            name="id"
-            onChange={onHandleChange}
-            className="border-solid border-2 border-gray-300 rounded-md "
-          />
-        </div>
-
-        <div className="flex flex-col space-y-1">
-          <label>비밀번호(Password)*</label>
-          <input
-            placeholder="비밀번호를 입력해주세요."
-            name="password"
-            onChange={onHandleChange}
-            className="border-solid border-2 border-gray-300 rounded-md "
-          />
-        </div>
-
-        <div className="flex flex-col space-y-1">
-          <label>비밀번호 확인*</label>
-          <input
-            placeholder="비밀번호를 다시 한 번 입력해주세요."
-            name="confirmPassword"
-            onChange={onHandleChange}
-            className="border-solid border-2 border-gray-300 rounded-md "
-          />
-        </div>
-
+        <FormInput
+          labelText="이름*"
+          placeholder="이름을 입력해주세요"
+          name="name"
+          onHandleChange={onHandleChange}
+        />
+        <FormInput
+          labelText="아이디(ID)*"
+          placeholder="아이디를 입력해주세요"
+          name="id"
+          onHandleChange={onHandleChange}
+        />
+        <FormInput
+          labelText="비밀번호(Password)*"
+          placeholder="비밀번호를 입력해주세요."
+          name="password"
+          onHandleChange={onHandleChange}
+        />
+        <FormInput
+          labelText="비밀번호 확인*"
+          placeholder="비밀번호를 다시 한 번 입력해주세요."
+          name="confirmPassword"
+          onHandleChange={onHandleChange}
+        />
         <button
           type="submit"
           className="bg-indigo-500 rounded-md text-white hover:text-orange-100 hover:bg-indigo-800"

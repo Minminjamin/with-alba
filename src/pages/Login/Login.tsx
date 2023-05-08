@@ -5,6 +5,7 @@ import { auth } from "../../api/Firebase/FirebaseConfig";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { login } from "../../store/modules/isLogin/isLoginAction";
 import useInput from "../../hooks/useInput";
+import FormInput from "../FormInput";
 
 const Login = () => {
   const { text, onHandleChange } = useInput();
@@ -58,25 +59,19 @@ const Login = () => {
           <h3 className=" text-xl font-bold">로그인</h3>
         </div>
 
-        <div className="flex flex-col space-y-1">
-          <label>아이디(ID)</label>
-          <input
-            placeholder="아이디를 입력해주세요."
-            name="id"
-            onChange={onHandleChange}
-            className="border-solid border-2 border-gray-300 rounded-md "
-          />
-        </div>
+        <FormInput
+          labelText="아이디(ID)"
+          name="id"
+          placeholder="아이디를 입력해주세요."
+          onHandleChange={onHandleChange}
+        />
 
-        <div className="flex flex-col space-y-1">
-          <label>비밀번호(Password)</label>
-          <input
-            placeholder="비밀번호를 입력해주세요."
-            name="password"
-            onChange={onHandleChange}
-            className="border-solid border-2 border-gray-300 rounded-md "
-          />
-        </div>
+        <FormInput
+          labelText="비밀번호(Password)"
+          name="password"
+          placeholder="비밀번호를 입력해주세요."
+          onHandleChange={onHandleChange}
+        />
 
         <button
           type="submit"
