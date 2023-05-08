@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { firestore } from "../../api/Firebase/FirebaseConfig";
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useInput from "../../hooks/useInput";
+import FormInput from "../FormInput";
+import SearchMap from "../SearchMap";
 
 declare global {
   interface Window {
@@ -111,25 +113,18 @@ const Editor = () => {
           />
         </div>
 
-        <div className="flex flex-col space-y-2">
-          <label>제목</label>
-          <input
-            placeholder="제목을 입력해주세요."
-            name="title"
-            onChange={onHandleChange}
-            className="border-solid border-2 border-gray-300 rounded-md w-full"
-          />
-        </div>
-
-        <div className="flex flex-col space-y-2">
-          <label>모집 연령층</label>
-          <input
-            placeholder="모집 연령층을 입력해주세요"
-            name="age"
-            onChange={onHandleChange}
-            className="border-solid border-2 border-gray-300 rounded-md "
-          />
-        </div>
+        <FormInput
+          labelText="제목"
+          placeholder="제목을 입력해주세요."
+          name="title"
+          onHandleChange={onHandleChange}
+        />
+        <FormInput
+          labelText="모집 연령층"
+          placeholder="모집 연령층을 입력해주세요."
+          name="age"
+          onHandleChange={onHandleChange}
+        />
 
         <div className="flex flex-col space-y-2">
           <label>자격 요건</label>
@@ -190,15 +185,13 @@ const Editor = () => {
             </div>
           </div>
 
-          <label>상세 주소</label>
-          <input
-            placeholder="상세 주소를 입력해주세요."
+          <FormInput
+            labelText="상세 주소"
+            placeholder="상세 주소를 입력해주세요"
             name="detailAddress"
-            onChange={onHandleChange}
-            className="border-solid border-2 border-gray-300 rounded-md "
+            onHandleChange={onHandleChange}
           />
 
-          {/* <SearchMap data={text} address={text.address || "집"} /> */}
           <div id="map" style={{ width: "400px", height: "250px" }} />
         </div>
 
