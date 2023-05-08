@@ -1,9 +1,9 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../api/Firebase/FirebaseConfig";
-import useInput from "../../hooks/useInput";
-import FormInput from "../FormInput";
+import { auth } from "../api/Firebase/FirebaseConfig";
+import useInput from "../hooks/useInput";
+import FormInput from "../pages/FormInput";
 
 const Join = () => {
   const { text, onHandleChange } = useInput();

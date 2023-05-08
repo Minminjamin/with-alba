@@ -1,11 +1,11 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../api/Firebase/FirebaseConfig";
+import { auth } from "../api/Firebase/FirebaseConfig";
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import { login } from "../../store/modules/isLogin/isLoginAction";
-import useInput from "../../hooks/useInput";
-import FormInput from "../FormInput";
+import { login } from "../store/modules/isLogin/isLoginAction";
+import useInput from "../hooks/useInput";
+import FormInput from "../pages/FormInput";
 
 const Login = () => {
   const { text, onHandleChange } = useInput();
