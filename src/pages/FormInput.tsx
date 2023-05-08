@@ -1,18 +1,27 @@
 import React from "react";
 import useInput from "../hooks/useInput";
 
-const FormInput = (
-  labeltext: string,
-  placeholder: string,
-  name: string,
-  onHandleChange: any
-) => {
-  //   const { text, onHandleChange } = useInput();
-
+interface propTypes {
+  labelText: string;
+  placeholder: string;
+  name: string;
+  onHandleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+const FormInput = ({
+  labelText,
+  placeholder,
+  name,
+  onHandleChange,
+}: propTypes) => {
   return (
-    <div>
-      <label>{labeltext}</label>
-      <input placeholder={placeholder} name={name} onChange={onHandleChange} />
+    <div className="flex flex-col space-y-1">
+      <label>{labelText}</label>
+      <input
+        placeholder={placeholder}
+        name={name}
+        onChange={onHandleChange}
+        className="border-solid border-2 border-gray-300 rounded-md "
+      />
     </div>
   );
 };
