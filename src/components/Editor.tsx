@@ -150,7 +150,7 @@ const Editor = () => {
           onHandleChange={onHandleChange}
         />
 
-        <div className="flex">
+        <div className=" space-y-3">
           <FormInput
             labelText="주소"
             placeholder="주소를 입력해주세요."
