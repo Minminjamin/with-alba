@@ -9,11 +9,11 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-between text-center z-10">
+    <div className="flex justify-between sm:w-full z-10">
       <header>
         <h1
           onClick={onHandleLogo}
-          className="font-extrabold text-3xl cursor-pointer"
+          className="font-extrabold lg:text-3xl cursor-pointer"
         >
           위드알바
         </h1>

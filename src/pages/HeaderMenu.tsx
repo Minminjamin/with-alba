@@ -60,7 +60,7 @@ const HeaderMenu = () => {
     >
       <h3>로그인/마이페이지</h3>
       {isOpen && (
-        <div className="mt-4 bg-white rounded-lg shadow-lg">
+        <div className="mt-4 bg-white rounded-lg shadow-lg text-center">
           <ul>
             <li className="py-2 hover:bg-cyan-100 hover:text-white">
               {isLoggedIn ? (

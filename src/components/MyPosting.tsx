@@ -20,7 +20,7 @@ const MyPosting = () => {
   };
 
   return (
-    <div>
+    <div className="flex justify-center ">
       {data ? (
         <div>
           <AlbaData data={data} />
