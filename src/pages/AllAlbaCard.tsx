@@ -25,7 +25,7 @@ const AllAlbaCard = () => {
   };
 
   return (
-    <div className="flex grid-rows-3 justify-around">
+    <div>
       <PostingCard postingData={postingData} clickEvent={HandleClickPosting} />
     </div>
   );
