@@ -30,12 +30,12 @@ const MyPage = () => {
   };
 
   return (
-    <div className="w-full h-screen mt-28">
+    <div className="w-full h-screen mt-16">
       <span className="border-2 w-1/6 text-center border-violet-100 text-indigo-400">
         내가 쓴 공고 보기
       </span>
 
-      <div className="mt-28 grid grid-rows-3">
+      <div className="grid grid-rows-3 mt-16">
         {myData ? (
           <PostingCard postingData={myData} clickEvent={onHandleClick} />
         ) : (
