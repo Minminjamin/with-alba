@@ -53,15 +53,16 @@ const HeaderMenu = () => {
   };
 
   return (
+    // <div className="lg:mx-24 mt-10">
     <div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="absolute right-0"
+      className="absolute top-0 right-0 lg:mx-24 mt-10"
     >
-      <h3>로그인/마이페이지</h3>
+      <h3 className=" font-semibold lg:text-lg">로그인/마이페이지</h3>
       {isOpen && (
-        <div className="mt-4 bg-white rounded-lg shadow-lg text-center">
-          <ul>
+        <div className="mt-4 bg-white rounded-lg shadow-lg text-center ">
+          <ul className=" ">
             <li className="py-2 hover:bg-cyan-100 hover:text-white">
               {isLoggedIn ? (
                 <h4 className="font-medium" onClick={onHandleClickLogout}>
@@ -82,6 +83,7 @@ const HeaderMenu = () => {
         </div>
       )}
     </div>
+    // </div>
   );
 };
 

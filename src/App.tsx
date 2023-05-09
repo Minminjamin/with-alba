@@ -12,9 +12,9 @@ import MyPosting from "./components/MyPosting";
 function App() {
   return (
     <BrowserRouter>
-      <div className="mx-24 my-5 relative">
+      <div className=" lg:mx-24 mt-10">
         <Header />
-        <div className="">
+        <div>
           <Routes>
             <Route path=":userId/posting/:id" element={<ShowAlbaData />} />
             <Route path="/" element={<Home />} />

@@ -9,7 +9,7 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-between sm:w-full z-10">
+    <div className="flex justify-between items-center z-10 w-full">
       <header>
         <h1
           onClick={onHandleLogo}
@@ -18,7 +18,6 @@ const Header = () => {
           위드알바
         </h1>
       </header>
-
       <HeaderMenu />
     </div>
   );
