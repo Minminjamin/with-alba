@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import useDetailData from "../hooks/useDetailData";
 import AlbaData from "../pages/AlbaData";
-import NoData from "../pages/NoData";
+import NoData from "../pages/Nodata";
 
 const ShowAlbaData = () => {
   const { userId, id } = useParams<string>();
