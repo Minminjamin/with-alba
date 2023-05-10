@@ -1,13 +1,13 @@
 import React from "react";
-import Header from "./components/Header";
+import Header from "./routes/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Join from "./components/Join";
-import Login from "./components/Login";
-import MyPage from "./components/MyPage";
-import Editor from "./components/Editor";
-import ShowAlbaData from "./components/ShowAlbaData";
-import MyPosting from "./components/MyPosting";
+import Home from "./routes/Home";
+import Join from "./routes/Join";
+import Login from "./routes/Login";
+import MyPage from "./routes/MyPage";
+import Editor from "./routes/Editor";
+import ShowAlbaData from "./routes/ShowAlbaData";
+import MyPosting from "./routes/MyPosting";
 
 function App() {
   return (
