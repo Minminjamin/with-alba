@@ -4,7 +4,7 @@ import { firestore } from "../api/Firebase/FirebaseConfig";
 import { deleteDoc, doc } from "@firebase/firestore";
 import useDetailData from "../hooks/useDetailData";
 import AlbaData from "../pages/AlbaData";
-import NoData from "../pages/NoData";
+import NoData from "../pages/Nodata";
 
 const MyPosting = () => {
   const { userId, title } = useParams<any>();
