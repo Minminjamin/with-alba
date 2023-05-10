@@ -57,7 +57,7 @@ const Join = () => {
     <div className="flex justify-center items-center h-screen">
       <form
         onSubmit={onHandleJoin}
-        className="border-solid border-2 border-gray-300 h-2/3 w-1/3 flex flex-col justify-center px-10 py-20 space-y-6"
+        className="border-solid border-2 border-gray-300 lg:h-2/3 lg:w-1/3 flex flex-col justify-center px-10 py-20 space-y-6"
       >
         <div className="text-center">
           <h3 className=" text-xl font-bold">회원가입</h3>

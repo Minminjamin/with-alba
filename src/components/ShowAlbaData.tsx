@@ -31,12 +31,12 @@ const ShowAlbaData = () => {
   };
 
   return (
-    <div className="flex justify-center ">
+    <div className="flex justify-center space-y-10">
       {data ? (
-        <div className="px-10 py-20 space-y-8">
+        <div className="mt-10">
           <AlbaData data={data} />
 
-          <div className="w-full flex justify-center">
+          <div className="w-full flex justify-center mt-8">
             <input
               type="checkbox"
               className="shadow-md"
@@ -48,7 +48,7 @@ const ShowAlbaData = () => {
             </span>
           </div>
 
-          <div className="w-full flex justify-center">
+          <div className="w-full flex mt-8 justify-center">
             <button
               className="bg-sky-500 rounded-md text-white hover:bg-sky-800 w-2/5"
               onClick={onHandleButton}

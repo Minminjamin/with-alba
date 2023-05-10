@@ -25,7 +25,7 @@ const MyPosting = () => {
         <div>
           <AlbaData data={data} />
 
-          <div className="w-full flex justify-center">
+          <div className="w-full flex justify-center mt-8">
             <button
               onClick={isDelete}
               className="bg-red-600 rounded-md text-white hover:bg-red-900 w-1/5"

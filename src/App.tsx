@@ -12,7 +12,7 @@ import MyPosting from "./components/MyPosting";
 function App() {
   return (
     <BrowserRouter>
-      <div className=" lg:mx-24 mt-10">
+      <div className=" lg:mx-24 lg:mt-10">
         <Header />
         <div>
           <Routes>
