@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import React from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../api/Firebase/FirebaseConfig";
 import { useDispatch, useSelector } from "react-redux/es/exports";
@@ -56,6 +56,8 @@ const Login = () => {
     }
   };
 
+  const inputRef = useRef<HTMLInputElement>();
+
   return (
     <div className="flex justify-center items-center h-screen w-full">
       <form
@@ -71,6 +73,7 @@ const Login = () => {
           name="id"
           placeholder="아이디를 입력해주세요."
           onHandleChange={onHandleChange}
+          inputRef={inputRef}
         />
 
         <FormInput
@@ -78,6 +81,7 @@ const Login = () => {
           name="password"
           placeholder="비밀번호를 입력해주세요."
           onHandleChange={onHandleChange}
+          inputRef={inputRef}
         />
 
         <button

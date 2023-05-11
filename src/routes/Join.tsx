@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import React from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../api/Firebase/FirebaseConfig";
 import useInput from "../hooks/useInput";
@@ -53,6 +53,8 @@ const Join = () => {
     }
   };
 
+  const inputRef = useRef<HTMLInputElement>();
+
   return (
     <div className="flex justify-center items-center h-screen">
       <form
@@ -68,24 +70,28 @@ const Join = () => {
           placeholder="이름을 입력해주세요"
           name="name"
           onHandleChange={onHandleChange}
+          inputRef={inputRef}
         />
         <FormInput
           labelText="아이디(ID)*"
           placeholder="아이디를 입력해주세요"
           name="id"
           onHandleChange={onHandleChange}
+          inputRef={inputRef}
         />
         <FormInput
           labelText="비밀번호(Password)*"
           placeholder="비밀번호를 입력해주세요."
           name="password"
           onHandleChange={onHandleChange}
+          inputRef={inputRef}
         />
         <FormInput
           labelText="비밀번호 확인*"
           placeholder="비밀번호를 다시 한 번 입력해주세요."
           name="confirmPassword"
           onHandleChange={onHandleChange}
+          inputRef={inputRef}
         />
         <button
           type="submit"

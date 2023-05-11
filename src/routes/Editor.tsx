@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { getAuth } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { firestore } from "../api/Firebase/FirebaseConfig";
@@ -93,6 +93,9 @@ const Editor = () => {
     let map = new window.kakao.maps.Map(container, options);
   }, []);
 
+  const inputRef = useRef<HTMLInputElement>();
+  const textAreaReef = useRef<HTMLTextAreaElement>();
+
   return (
     <div className="flex justify-center ">
       <form onSubmit={onHandleSubmit} className="px-10 py-20 space-y-8">
@@ -111,36 +114,42 @@ const Editor = () => {
           placeholder="제목을 입력해주세요."
           name="title"
           onHandleChange={onHandleChange}
+          inputRef={inputRef}
         />
         <FormInput
           labelText="모집 연령층"
           placeholder="모집 연령층을 입력해주세요."
           name="age"
           onHandleChange={onHandleChange}
+          inputRef={inputRef}
         />
         <FormTextArea
           labelText="자격 요건"
           placeholder="자격 요건을 입력해주세요."
           name="qualification"
           onHandleChange={onHandleChange}
+          inputRef={textAreaReef}
         />
         <FormTextArea
           labelText="담당 업무"
           placeholder="담당 업무를 입력해주세요."
           name="responsibility"
           onHandleChange={onHandleChange}
+          inputRef={textAreaReef}
         />
         <FormTextArea
           labelText="우대 사항"
           placeholder="우대 사항 입력해주세요."
           name="preference"
           onHandleChange={onHandleChange}
+          inputRef={textAreaReef}
         />
         <FormInput
           labelText="모집 마감일"
           placeholder="모집 마감일을 입력해주세요."
           name="deadline"
           onHandleChange={onHandleChange}
+          inputRef={inputRef}
         />
 
         <div className=" space-y-3">
@@ -149,6 +158,7 @@ const Editor = () => {
             placeholder="주소를 입력해주세요."
             name="address"
             onHandleChange={onHandleChange}
+            inputRef={inputRef}
           />
           <button
             onClick={onHandleSearchLocation}
@@ -163,6 +173,7 @@ const Editor = () => {
           placeholder="상세 주소를 입력해주세요"
           name="detailAddress"
           onHandleChange={onHandleChange}
+          inputRef={inputRef}
         />
         <div id="map" style={{ width: "400px", height: "250px" }} />
 
