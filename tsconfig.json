@@ -10,6 +10,7 @@
       "kakao.maps.d.ts"
     ],
     "allowJs": true,
+    "strictNullChecks": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
