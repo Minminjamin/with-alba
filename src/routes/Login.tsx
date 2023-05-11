@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../api/Firebase/FirebaseConfig";
 import { useDispatch, useSelector } from "react-redux/es/exports";
@@ -37,6 +37,13 @@ const Login = () => {
         auth,
         `${text.id}@withalba.com`,
         text.password
+      );
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          id: `${text.id}@withalba.com`,
+          password: text.password,
+        })
       );
       dispatch(login());
       navigate("/");
