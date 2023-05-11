@@ -1,5 +1,4 @@
 import React from "react";
-import useInput from "../hooks/useInput";
 
 interface propTypes {
   labelText: string;
