@@ -7,6 +7,7 @@ interface propTypes {
   name: string;
   onHandleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
 const FormInput = ({
   labelText,
   placeholder,

@@ -2,18 +2,11 @@ import React, { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { firestore } from "../api/Firebase/FirebaseConfig";
-import { Form, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useInput from "../hooks/useInput";
 import FormInput from "../pages/FormInput";
-import SearchMap from "../pages/SearchMap";
 import FormTextArea from "../pages/FormTextArea";
-
-declare global {
-  interface Window {
-    kakao: any;
-  }
-}
 
 const Editor = () => {
   const { text, onHandleChange } = useInput();

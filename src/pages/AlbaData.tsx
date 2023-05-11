@@ -2,8 +2,6 @@ import React from "react";
 import SearchMap from "./SearchMap";
 
 const AlbaData = ({ data }: any) => {
-  //간접적으로 접근하도록 수정
-  // px-10 py-20
   return (
     <div className="space-y-8 flex flex-col sm:mx-3 sm:items-center">
       <img src={require("../../src/asset/img/basicImg.png")} />
