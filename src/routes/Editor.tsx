@@ -97,7 +97,7 @@ const Editor = () => {
   const textAreaReef = useRef<HTMLTextAreaElement>();
 
   return (
-    <div className="flex justify-center ">
+    <div className="flex justify-center lg:mt-16 sm:mt-5">
       <form onSubmit={onHandleSubmit} className="px-10 py-20 space-y-8">
         <div className="flex flex-col space-y-2">
           <label>사진</label>
