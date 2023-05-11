@@ -31,7 +31,7 @@ const ShowAlbaData = () => {
   };
 
   return (
-    <div className="flex justify-center space-y-10">
+    <div className="flex justify-center space-y-10 lg:mt-16 sm:mt-5">
       {data ? (
         <div className="mt-10">
           <AlbaData data={data} />
