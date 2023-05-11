@@ -34,19 +34,17 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className=" lg:mx-24 lg:mt-10">
+      <div className=" lg:mx-24 lg:mt-10 bg-white">
         <Header />
-        <div>
-          <Routes>
-            <Route path=":userId/posting/:id" element={<ShowAlbaData />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/login/join" element={<Join />} />
-            <Route path=":userId/mypage" element={<MyPage />} />
-            <Route path=":userId/mypage/:title" element={<MyPosting />} />
-            <Route path="/editor" element={<Editor />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path=":userId/posting/:id" element={<ShowAlbaData />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/login/join" element={<Join />} />
+          <Route path=":userId/mypage" element={<MyPage />} />
+          <Route path=":userId/mypage/:title" element={<MyPosting />} />
+          <Route path="/editor" element={<Editor />} />
+        </Routes>
       </div>
     </BrowserRouter>
   );

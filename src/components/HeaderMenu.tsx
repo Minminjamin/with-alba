@@ -57,7 +57,7 @@ const HeaderMenu = () => {
     <div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="absolute top-0 right-0 lg:mx-24 lg:mt-10"
+      className="absolute top-0 right-0 lg:right-24 lg:mx-24"
     >
       <h3 className=" font-semibold lg:text-lg">로그인/마이페이지</h3>
       {isOpen && (
