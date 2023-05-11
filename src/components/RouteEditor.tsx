@@ -21,7 +21,7 @@ const RouteEditor = () => {
   };
 
   return (
-    <div className="absolute bottom-0 right-0 mb-10 lg:mr-24">
+    <div className="fixed bottom-0 right-0 mb-10 lg:mr-24">
       <button
         className="rounded-full bg-red-200 text-white border-pink-300 border-2 z-30 lg:w-20 lg:h-20 lg:text-5xl w-10 h-10 text-2xl"
         onClick={onHandleClickPlus}

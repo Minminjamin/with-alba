@@ -9,7 +9,7 @@ const Header = () => {
   };
 
   return (
-    <div className="fixed w-full flex justify-between items-center">
+    <div className="fixed w-full flex justify-between items-center sm:top-0 lg:mt-10">
       <h1
         onClick={onHandleLogo}
         className="font-extrabold lg:text-3xl cursor-pointer text-xl "

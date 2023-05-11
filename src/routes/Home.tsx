@@ -5,7 +5,7 @@ import RouteEditor from "../components/RouteEditor";
 
 const Home = () => {
   return (
-    <div className="h-screen lg:mt-10 my-8">
+    <div className="h-screen my-8 mt-14">
       <HomeText />
       <AllAlbaCard />
       <RouteEditor />

@@ -34,7 +34,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className=" lg:mx-24 lg:mt-10 bg-white">
+      <div className=" lg:mx-24 bg-white flex flex-col">
         <Header />
         <Routes>
           <Route path=":userId/posting/:id" element={<ShowAlbaData />} />

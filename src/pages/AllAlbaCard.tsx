@@ -25,7 +25,7 @@ const AllAlbaCard = () => {
   };
 
   return (
-    <div className="grid grid-rows-3 mt-16">
+    <div className="grid grid-rows-3 lg:mt-16 sm:mt-10">
       <PostingCard postingData={postingData} clickEvent={HandleClickPosting} />
     </div>
   );
