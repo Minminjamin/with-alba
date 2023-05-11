@@ -44,6 +44,7 @@ const HeaderMenu = () => {
   const onHandleClickLogout = async () => {
     try {
       await signOut(auth);
+      localStorage.removeItem("user");
       alert("로그아웃되었습니다");
       dispatch(logout());
     } catch (error) {
