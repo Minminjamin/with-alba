@@ -20,12 +20,12 @@ const MyPosting = () => {
   };
 
   return (
-    <div className="flex justify-center ">
+    <div className="flex justify-center  space-y-10 lg:mt-16 sm:mt-5">
       {data ? (
         <div>
           <AlbaData data={data} />
 
-          <div className="w-full flex justify-center mt-8">
+          <div className="w-full flex justify-center">
             <button
               onClick={isDelete}
               className="bg-red-600 rounded-md text-white hover:bg-red-900 w-1/5"
