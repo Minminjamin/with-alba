@@ -117,7 +117,7 @@
 
 ## 📄 Home
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5b8d0afe-e5b6-4aa2-be3a-0d6c75b52389/Untitled.png)
+![Home](https://github.com/Minminjamin/with-alba/assets/122540708/4e74ea20-29ca-4069-bf91-287ed1724853)
 
 - 제일 처음 접속되는 페이지 입니다.
 - Header에서 오른쪽 상단의 로고를 클릭하면 항상 이 페이지로 이동합니다.
