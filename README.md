@@ -1,19 +1,21 @@
-# 🔍 With_Alba : 청소년들이 근무 가능한 알바처를 찾을 수 있는 웹 서비스, 위드알바입니다.
+
+# 🔍 With_Alba : 청소년들이 근무 가능한 알바처를 찾을 수 있는 웹 서비스, 위드알바입니다.
 
 ![untitled@2x](https://github.com/Minminjamin/with-alba/assets/122540708/7cbc321d-05ff-428f-966e-75ef70b511bb)
 
-| | test account |
-|-- | |
+|  |  test account|
+|--|--|
 | ID | test123 |
-| PassWord | testtest123 |
+| Password | testtest123 |
 
-# 👉🏻 위드알바란?
+
+# 👉🏻 위드알바란?
 
 ## 💡 **배경 및 목적**
 
 20대 이상의 성인은 비교적 쉽게 알바를 구할 수 있지만, 10대 청소년은 법적 제약과 사회적 인식으로 인해 알바 구직에 어려움을 겪습니다. 이러한 문제점을 보완하고 10대 후반부터 20대 초반의 청소년이 쉽게 알바 구직을 할 수 있도록 하는 것을 목표로 합니다
 
-## 💡 **서비스 개요**
+## 💡 **서비스 개요**
 
 위드알바는 청소년들이 쉽게 알바 구인 정보를 찾을 수 있는 플랫폼으로, 청소년 고객이 알바 구인 정보를 등록하면 청소년 구직자들은 해당 정보를 검색하여 적합한 알바를 찾을 수 있습니다.
 
@@ -25,20 +27,22 @@
 
 ## 🔨Front-End
 
-- React
-- Typescript
-- tailwindcss
-- Redux
+<div>
+	<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white">
+	<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white">
+	<img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=for-the-badge&logo=Tailwind CSS&logoColor=white">
+	<img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white">
+<div>
 
 ## 🔨Back-End
-
-- Firebase Authentication
-- Firebase Firestore Database
+<div>
+	<img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=Firebase&logoColor=white">
+</div>
 - LocalStorage
 
 # 📂 디렉토리 구조
 
-📦src
+```📦src
 ┣ 📂api
 ┃ ┣ 📂Firebase
 ┃ ┃ ┗ 📜FirebaseConfig.ts
@@ -78,6 +82,7 @@
 ┃ ┣ 📜App.tsx
 ┃ ┣ 📜index.tsx
 ┗ ┗ 📜index.css
+```
 
 ## 📂api
 
@@ -107,7 +112,7 @@
 
 - redux에서 사용되는 리듀서와 액션을 정의한 파일을 모아둔 디렉토리입니다.
 
-# 📄 Pages
+# 📄 Pages
 
 ## 📄 공통
 
